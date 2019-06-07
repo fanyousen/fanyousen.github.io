@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":4,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="遗传算法简介及其基本原理&amp;emsp;&amp;emsp;遗传算法（Genetic Algorithm，GA）是由美国密歇根大学心理学教授、电子工程学和计算机科学教授John H. Holland首先提出的一种随机自适应的全局搜索算法。遗传算法吸收了生命科学与工程学科中的重要理论成果，用于解决复杂优化问题。其中，达尔文的进化论和以孟德尔的遗传学说为基础的现代遗传学对算法的提出具有最为重要的影响。 &amp;emsp">
+<meta name="keywords" content="算法,计算智能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="遗传算法及其实现">
+<meta property="og:url" content="http://winslow.cn/2019/06/04/遗传算法简介及其实现/index.html">
+<meta property="og:site_name" content="范有森的博客">
+<meta property="og:description" content="遗传算法简介及其基本原理&amp;emsp;&amp;emsp;遗传算法（Genetic Algorithm，GA）是由美国密歇根大学心理学教授、电子工程学和计算机科学教授John H. Holland首先提出的一种随机自适应的全局搜索算法。遗传算法吸收了生命科学与工程学科中的重要理论成果，用于解决复杂优化问题。其中，达尔文的进化论和以孟德尔的遗传学说为基础的现代遗传学对算法的提出具有最为重要的影响。 &amp;emsp">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://winslow.cn/2019/06/04/遗传算法简介及其实现/遗传算法流程图.png">
+<meta property="og:updated_time" content="2019-06-07T09:36:19.483Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="遗传算法及其实现">
+<meta name="twitter:description" content="遗传算法简介及其基本原理&amp;emsp;&amp;emsp;遗传算法（Genetic Algorithm，GA）是由美国密歇根大学心理学教授、电子工程学和计算机科学教授John H. Holland首先提出的一种随机自适应的全局搜索算法。遗传算法吸收了生命科学与工程学科中的重要理论成果，用于解决复杂优化问题。其中，达尔文的进化论和以孟德尔的遗传学说为基础的现代遗传学对算法的提出具有最为重要的影响。 &amp;emsp">
+<meta name="twitter:image" content="http://winslow.cn/2019/06/04/遗传算法简介及其实现/遗传算法流程图.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://winslow.cn/2019/06/04/遗传算法简介及其实现/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>遗传算法及其实现 | 范有森的博客</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?68a914c2d4a665637fd00e13a63c807a";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">范有森的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">心中有目标，风雨不折腰。</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">5</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-briefcase"></i> <br>分类<span class="badge">2</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">4</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-book">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/book/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>书籍</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://winslow.cn/2019/06/04/遗传算法简介及其实现/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="范有森">
+      <meta itemprop="description" content="我活在世上，无非想要明白些道理，遇见些有趣的事。">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="范有森的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">遗传算法及其实现
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-04 12:25:28" itemprop="dateCreated datePublished" datetime="2019-06-04T12:25:28+08:00">2019-06-04</time>
+            
+
+            
+            
+          </span>
+
+          
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算智能/" itemprop="url" rel="index"><span itemprop="name">计算智能</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+          
+            
+            
+          
+
+          
+          
+            <span id="/2019/06/04/遗传算法简介及其实现/" class="leancloud_visitors" data-flag-title="遗传算法及其实现">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数：</span>
+                
+                <span title="字数">4.6k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">4 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="遗传算法简介及其基本原理"><a href="#遗传算法简介及其基本原理" class="headerlink" title="遗传算法简介及其基本原理"></a>遗传算法简介及其基本原理</h1><p>&emsp;&emsp;<strong>遗传算法</strong>（Genetic Algorithm，GA）是由美国密歇根大学心理学教授、电子工程学和计算机科学教授John H. Holland首先提出的一种随机自适应的全局搜索算法。遗传算法吸收了生命科学与工程学科中的重要理论成果，用于解决复杂优化问题。其中，达尔文的进化论和以孟德尔的遗传学说为基础的现代遗传学对算法的提出具有最为重要的影响。</p>
+<p>&emsp;&emsp;生物的进化过程是一个不断往复的循环过程。在每个循环中，由于自然环境的恶劣、资源的短缺和天敌的侵害等因素，个体必须接受自然的选择。在选择过程中，一部分对自然环境具有较高适应能力的个体得以保存下来形成新的种群。而另一部分个体则由于不适应自然环境而面临被淘汰的危险。经过选择保存下来的群体构成种群，种群中的生物个体进行交配繁衍，保证了种群的发展。交配产生的子代继承了父代的部分特性，而且一般来说，子代要比父代具有更强的环境适应能力。进化过程伴随着种群的变异，种群中部分个体发生基因变异，成为新的个体。这样，经过选择、交配和变异后的种群取代了原来的种群，进入下一个循环。</p>
+<p>&emsp;&emsp;遗传算法正是通过模拟自然界中生物的遗传进化过程，对优化问题的最优解进行搜索。算法维护一个代表问题潜在解得群体，对于群体的优化，算法引入了类似自然进化中选择、交配以及变异等算子。遗传算法搜索全局最优解的过程是一个不断迭代的过程（每一次迭代相当于生物进化中的一次循环），知道满足算法的终止条件为止。</p>
+<p>&emsp;&emsp;在遗传算法中，问题的每个有效解被称为一个“<strong>染色体</strong>（chromosome）”，相对于群体中的每个生物<strong>个体</strong>（individual）。染色体的具体形式是一个使用特定编码方式生成的编码串。编码串中的每一个编码单元称为“<strong>基因</strong>（gene）”。</p>
+<p>&emsp;&emsp;遗传算法通过比较<strong>适应值</strong>（fitness value）区分染色体的优劣，适应值越大的染色体越优秀。<strong>评估函数</strong>（evaluation function）用来计算并确定染色体对应的适应值。</p>
+<p>&emsp;&emsp;<strong>选择算子</strong>（selection）按照一定的规则对群体的染色体进行选择，得到父代种群。一般地，越优秀的染色体被选中的次数越多。</p>
+<p>&emsp;&emsp;<strong>交配算子</strong>（crossover）作用于每两个成功交配的染色体，染色体交换各自的部分基因，产生两个子代染色体。子代染色体取代父代染色体进入新种群，而没有交配的染色体则直接进入新种群。</p>
+<p>&emsp;&emsp;<strong>变异算子</strong>（mutation）使新种群进行小概率的变异。染色体发生变异的基因改变数值，得到新的染色体。经过变异的新种群替代原有种群进入下一次进化。</p>
+<p>定义表</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>生物遗传进化</th>
+<th>遗传算法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>群体</td>
+<td>问题搜索空间的一组有效解（表现为群体规模$N$）</td>
+</tr>
+<tr>
+<td>种群</td>
+<td>经过选择产生的新群体（规模同样为$N$）</td>
+</tr>
+<tr>
+<td>染色体</td>
+<td>问题有效解的编码串</td>
+</tr>
+<tr>
+<td>基因</td>
+<td>染色体的一个编码单元</td>
+</tr>
+<tr>
+<td>适应能力</td>
+<td>染色体的适应值</td>
+</tr>
+<tr>
+<td>交配</td>
+<td>两个染色体交换部分基因得到两个新的子代染色体</td>
+</tr>
+<tr>
+<td>变异</td>
+<td>染色体某些基因的数值发生改变</td>
+</tr>
+<tr>
+<td>进化结束</td>
+<td>算法满足终止条件时结束，输出全局最优解</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="遗传算法的流程"><a href="#遗传算法的流程" class="headerlink" title="遗传算法的流程"></a>遗传算法的流程</h1><p>遗传算法的实现主要包括了一下七个重要问题</p>
+<ul>
+<li>染色体的编码</li>
+<li>群体的初始化</li>
+<li>适应值评价</li>
+<li>选择种群</li>
+<li>种群交配</li>
+<li>种群变异</li>
+<li>算法流程</li>
+</ul>
+<p>&emsp;&emsp;这个几个问题尤其是选择算子、交配算子和变异算子的具体实现与算法搜索全局最优解的能力息息相关。在处理不同优化问题时，以上几个方面可能需要根据问题的特定情况采用不同的方法实现，以提高遗传算法的性能。</p>
+<h2 id="染色体编码"><a href="#染色体编码" class="headerlink" title="染色体编码"></a>染色体编码</h2><p>&emsp;&emsp;应用遗传算法，需要解决问题解的表示，即染色体的编码方式。染色体编码方式确定是否得当会对接下来染色体的交配和变异操作构成影响。在使用遗传算法解决具体问题时，采用何种编码方案不是一概而论的，应尽量分析问题的特点，制定可行的编码方案。</p>
+<p>&emsp;&emsp;目前用于染色体编码的方法有格雷码编码、字母编码、多参数交叉编码等。下面仅介绍<strong>二进制编码方法</strong>（Binary Representation）和<strong>浮点数编码方法</strong>（Float Point Representation）</p>
+<h3 id="二进制编码方式"><a href="#二进制编码方式" class="headerlink" title="二进制编码方式"></a>二进制编码方式</h3><p>&emsp;&emsp;二进制编码方法产生的染色体是一个二进制符号序列，染色体的每一个基因只能取值$0$或$1$。假定问题定义的有效解空间为$[U_{min},U_{max}]^D$,其中$D$为有效解得变量维数，使用$L$位二进制符号串表示解的一维变量，则得到如下表所示的编码方式：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>二进制符号串</th>
+<th>对应的实际取值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$0000···0000$</td>
+<td>$U_{min}$</td>
+</tr>
+<tr>
+<td>$1111···1111$</td>
+<td>$U_{max}$</td>
+</tr>
+<tr>
+<td>$X_LX_{L-1}···X_2X_1$</td>
+<td>$U_{min}+\frac{(U_{max}-U_{min}) \sum_{j=1}^{L} {X_j  2^{j-1}}}{2^L-1}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&emsp;&emsp;例如，假设$[U_{min},U_{max}]为[1,64]$，采用$6$为二进制符号串进行编码，则某个二进制符号串$010101$代表了数值$22$</p>
+<p>&emsp;&emsp;因此采用$L$位进行编码时的精度为$\frac{U_{max}-U_{min}}{2^L-1}$，可见该种方法在编码的精度方面是较差的。当要求采用较高的精度或表示较大范围的数时，必须通过增加$L$来达到要求。可是当$L$变得很大时，将增加算法操作复杂度和运算量。所以二进制编码在解决某些精度要求较高或解含有多个变量的优化问题时，表现得不尽人意。</p>
+<h3 id="浮点数编码方式"><a href="#浮点数编码方式" class="headerlink" title="浮点数编码方式"></a>浮点数编码方式</h3><p>&emsp;&emsp;浮点数编码方法中，染色体的长度等于问题定义的解的变量个数，染色体的每一个基因等于解的每一维变量。例如待求解问题的一个有效解为$X_i=(x_{i}^{1},x_{i}^{2},···,x_{i}^{D-1},x_{i}^{D})$，其中D为解的变量维数。则该解对应的染色体编码为$(x_{i}^{1},x_{i}^{2},···,x_{i}^{D-1},x_{i}^{D})$。</p>
+<p>&emsp;&emsp;浮点数编码方式适合于表示取值范围较大的数值，对降低采用遗传算法对染色体进行处理的复杂性起到了很好的作用。</p>
+<h2 id="群体的初始化"><a href="#群体的初始化" class="headerlink" title="群体的初始化"></a>群体的初始化</h2><p>&emsp;&emsp;遗传算法在一个给定的初始化进化种群中进行迭代搜索。一般情况下，在群体初始化阶段采用的是随机数初始方法。采用生成随机数的方式，对染色体的每一维变量进行初始化赋值。如果在初始化时保证初始群体已经是一定程度上的优良群体的话，将能够有效提高算法找到全局最优解的能力。</p>
+<h2 id="适应值评价"><a href="#适应值评价" class="headerlink" title="适应值评价"></a>适应值评价</h2><p>&emsp;&emsp;评价函数用于评估各个染色体的适应值，进而区分优劣。评价函数常常根据问题的优化目标来确定，如在求解函数优化问题时，问题定义的目标函数可以作为评价函数的原型。对于求解最大值的问题，可以按照遗传算法的规定认为适应值越大染色体越优。对于其他优化问题，问题定义的目标函数必须经过一定的变换。例如，应用求解某个函数的最小值，可对问题定义的目标函数$f(X)$进行以下变换，得到算法的评价函数$Eval(C)$</p>
+<script type="math/tex; mode=display">Eval(C) = - f(X)</script><p>其中$X$表示一个有效解，$C$表示$X$对应的染色体。</p>
+<h2 id="选择算子"><a href="#选择算子" class="headerlink" title="选择算子"></a>选择算子</h2><p>&emsp;&emsp;种群的选择操作使用<strong>轮盘赌选择算法</strong>（roulette wheel selection）。轮盘赌选择算法是遗传算法中最经常使用的选择算法，其基本思想是基于概率的随机选择。<br>&emsp;&emsp;轮盘赌选择算法首先根据群体中每个染色体的适应值得到群体所有染色体的适应值总和，并分别计算每个染色体适应值与群体适应值总和的比$P_i$；其次假设一个具有$N$个扇区的轮盘，每个扇区对应群体中的一个染色体，扇区的大小与对应染色体的$P_i$成正比关系。<br>&emsp;&emsp;每次选择就转动一次轮盘，轮盘转动停止时指针停留的扇区对应的染色体即被选中进入种群。一次进行$N$次选择即可得到规模同样为$N$的种群。较优染色体的$P$值较大，被选择的概率也就相对较大。但由于选择过程具有随机性，并不能保证每次选择均选中这些较优的染色体，因此较差染色体也有一定的生存空间。</p>
+<h2 id="交配算子"><a href="#交配算子" class="headerlink" title="交配算子"></a>交配算子</h2><p>&emsp;&emsp;在染色体交配阶段,每个染色体能否进行交配由交配概率$P_c$(一般取值为$0.4~0.99$之间)决定，其具体过程为：对于每个染色体，如果$Random(0,1)$小于$P_c$则表示该染色体可进行交配操作，其中$Random(0,1)$为$[0,1]$间均匀分布的随机数产生器，否则染色体不参与交配直接复制到新种群中。<br>&emsp;&emsp;每两个按照$P_c$交配概率选择出来的染色体进行交配，经过交换各自的部分基因，产生两个新的子代染色体。其具体操作是随机产生一个有效的交配位置，染色体交换位于该交配位置后的所有基因。参与交配的父代染色体个数与产生的子代染色体个数一样，因此新种群的规模依然为$N$。</p>
+<h2 id="变异算子"><a href="#变异算子" class="headerlink" title="变异算子"></a>变异算子</h2><p>&emsp;&emsp;染色体的编译作用于基因之上，对于交配后新种群中染色体的每一位基因，根据变异概率$P_m$判断该基因是否变异。如果$Random(0,1)$小于$P_m$，则改变该基因的取值；否则该基因不发生变异，保持不变。</p>
+<p>&emsp;&emsp;为了保持遗传算法较好的运行性能，变异概率$P_m$应该设置在一个合适的范围内。变异操作通过改变原有染色体的基因，在提高群体多样性方面具有明显的促进作用。如果$P_m$过小，算法容易早熟，在算法运行过程中，已找到的较优解可能在变异过程中遭到破坏；如果$P_m$过大，可能会导致算法目前所处的较好的搜索状态倒退回到原来较差的情况。因此，应该讲种群的变异限制在一定范围内。一般地，$P_m$可设定在$0.001~0.1之间$</p>
+<h2 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h2><p>遗传算法的基本步骤：</p>
+<ol>
+<li>初始化规模为$N$的群体，其中染色体每个基因的值采用随机数产生器生成。当前进化代数$Generation=0$</li>
+<li>采用评价函数对群体中所有染色体进行评价，分别计算每个染色体的适应值，保存适应值最大的染色体$Best$</li>
+<li>采用轮盘赌选择算法对群体中的染色体进行选择操作，产生规模同为$N$的种群。</li>
+<li>按照概率$P_c$从种群中选择染色体进行交配。每两个进行交配的父代染色体，交换部分基因，产生两个新的子代染色体，子代染色体取代父代染色体进入新种群。没有进行交配的染色体则直接复制进入新种群。</li>
+<li>按照概率$P_m$对新种群中染色体的基因进行变异操作。发生变异的基因数值发生改变。变异后的染色体取代原有染色体进入新群体，未发生变异的染色体直接进入新群体。</li>
+<li>变异后的新群体取代原有群体，重新计算群体中各个染色体的适应值。倘若群体的最大适应值大于$Best$，则以该最大适应值对应的染色体替代$Best$</li>
+<li>当前进化代数$Generation$加$1$。如果$Generation$超过规定的最大进化代数或$Best$达到规定的误差要求，算法结束；否则回到步骤$3$</li>
+</ol>
+<p>注：染色体的交配和变异操作均是在选择后进行的。</p>
+<p><img src="遗传算法流程图.png" alt></p>
+
+      
+    </div>
+
+    
+      
+
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\2019\06\04\最优化问题\" rel="bookmark">计算智能——最优化问题</a></div>
+      
+    </li>
+  
+  </ul>
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>范有森</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="http://winslow.cn/2019/06/04/遗传算法简介及其实现/" title="遗传算法及其实现">http://winslow.cn/2019/06/04/遗传算法简介及其实现/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+          
+            <a href="/tags/计算智能/" rel="tag"><i class="fa fa-tag"></i> 计算智能</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/04/最优化问题/" rel="next" title="计算智能——最优化问题">
+                <i class="fa fa-chevron-left"></i> 计算智能——最优化问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="范有森">
+            
+              <p class="site-author-name" itemprop="name">范有森</p>
+              <div class="site-description motion-element" itemprop="description">我活在世上，无非想要明白些道理，遇见些有趣的事。</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/fanyousen" title="GitHub &rarr; https://github.com/fanyousen" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://blog.csdn.net/VanYousen" title="CSDN &rarr; https://blog.csdn.net/VanYousen" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#遗传算法简介及其基本原理"><span class="nav-number">1.</span> <span class="nav-text">遗传算法简介及其基本原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#遗传算法的流程"><span class="nav-number">2.</span> <span class="nav-text">遗传算法的流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#染色体编码"><span class="nav-number">2.1.</span> <span class="nav-text">染色体编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二进制编码方式"><span class="nav-number">2.1.1.</span> <span class="nav-text">二进制编码方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浮点数编码方式"><span class="nav-number">2.1.2.</span> <span class="nav-text">浮点数编码方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#群体的初始化"><span class="nav-number">2.2.</span> <span class="nav-text">群体的初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#适应值评价"><span class="nav-number">2.3.</span> <span class="nav-text">适应值评价</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择算子"><span class="nav-number">2.4.</span> <span class="nav-text">选择算子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#交配算子"><span class="nav-number">2.5.</span> <span class="nav-text">交配算子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变异算子"><span class="nav-number">2.6.</span> <span class="nav-text">变异算子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法流程"><span class="nav-number">2.7.</span> <span class="nav-text">算法流程</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">  <a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">粤ICP备18042042号 </a>&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">范有森</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">12k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+    
+    <span title="阅读时长">10 分钟</span>
+  
+</div>
+
+
+  <div class="powered-by">Powered By <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> </div>
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
+          } else {
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! More info at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+            
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'idCjvNp7VLdBNxjpznD0hSSO-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'idCjvNp7VLdBNxjpznD0hSSO-gzGzoHsz',
+                'X-LC-Key': 'DMYOw5SiIbMFTs0j18IOFqAn',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
+    });
+  </script>
+
+
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script>
+  
+    bookmark.scrollToMark('auto', "#更多");
+  
+  </script>
+
+
+  
+<script>
+  $('.highlight').not('.gist .highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      const selection = document.getSelection();
+      const selected = selection.rangeCount > 0 ? selection.getRangeAt(0) : false;
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('复制成功');
+        else $(this).text('复制失败');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+      if (selected) {
+        selection.removeAllRanges();
+        selection.addRange(selected);
+      }
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+
+</body>
+</html>
