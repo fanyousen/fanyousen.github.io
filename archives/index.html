@@ -22,6 +22,10 @@
 <meta name="theme-color" content="#222">
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
 
 
 
@@ -72,14 +76,14 @@
     root: '/',
     scheme: 'Gemini',
     version: '7.1.2',
-    sidebar: {"position":"left","display":"post","offset":4,"onmobile":false,"dimmer":false},
+    sidebar: {"position":"left","display":"post","offset":4,"onmobile":true,"dimmer":false},
     back2top: true,
     back2top_sidebar: true,
     fancybox: false,
     fastclick: false,
     lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    tabs: false,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -428,15 +432,6 @@
       <span class="archive-move-on"></span>
 
       
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 共 4 篇日志。 继续努力。
-      </span>
-      
 
       
 
@@ -646,6 +641,10 @@
                 <div class="site-state-item site-state-categories">
                   
                     
+                      <a href="/categories/">
+                    
+                  
+                    
                     
                       
                     
@@ -653,7 +652,7 @@
                     
                     <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">分类</span>
-                  
+                  </a>
                 </div>
               
 
@@ -661,6 +660,10 @@
                 
                 
                 <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
                   
                     
                     
@@ -676,7 +679,7 @@
                     
                     <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">标签</span>
-                  
+                  </a>
                 </div>
               
             </nav>
@@ -774,7 +777,7 @@
     
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
     
-    <span title="阅读时长">10 分钟</span>
+    <span title="阅读时长">15 分钟</span>
   
 </div>
 
@@ -789,6 +792,32 @@
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
 
 
 
@@ -887,6 +916,9 @@
 
 
   
+  <script src="/js/js.cookie.js?v=7.1.2"></script>
+  <script src="/js/scroll-cookie.js?v=7.1.2"></script>
+
 
   
 
@@ -1222,99 +1254,45 @@
 
 
   
+
   
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
   <script>
     
-    function showTime(Counter) {
-      var entries = [];
-      var $visitors = $('.leancloud_visitors');
-
-      $visitors.each(function() {
-        entries.push( $(this).attr('id').trim() );
-      });
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { '$in': entries } }) })
-        .done(function({ results }) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.url;
-            var time = item.time;
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for (var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if (countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function ({ responseJSON }) {
-          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
-        });
-    }
+      pbOptions = {};
+      
+        pbOptions.iconStyle = "default";
+      
+        pbOptions.boxForm = "horizontal";
+      
+        pbOptions.position = "topCenter";
+      
+        pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Linkedin";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
     
-
-    $(function() {
-      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'idCjvNp7VLdBNxjpznD0hSSO-gzGzoHsz')
-        .done(function({ api_server }) {
-          var Counter = function(method, url, data) {
-            return $.ajax({
-              method: method,
-              url: 'https://' + api_server + '/1.1' + url,
-              headers: {
-                'X-LC-Id': 'idCjvNp7VLdBNxjpznD0hSSO-gzGzoHsz',
-                'X-LC-Key': 'DMYOw5SiIbMFTs0j18IOFqAn',
-                'Content-Type': 'application/json',
-              },
-              data: data
-            });
-          };
-          
-            if ($('.post-title-link').length >= 1) {
-              showTime(Counter);
-            }
-          
-        });
-    });
-  </script>
-
-
-
-  
-
-  
-  
-
-  
-  
-
-  
-
-
-  
-
-  
-
-  
-  <script>
-    (function(){
-      var bp = document.createElement('script');
-      var curProtocol = window.location.protocol.split(':')[0];
-      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(bp, s);
-    })();
+    
   </script>
 
 
@@ -1323,19 +1301,6 @@
   
 
   
-
-  
-
-  
-  
-  
-  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
-  <script>
-  
-    bookmark.loadBookmark();
-  
-  </script>
-
 
   
 <script>

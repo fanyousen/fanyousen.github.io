@@ -22,6 +22,10 @@
 <meta name="theme-color" content="#222">
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
 
 
 
@@ -72,14 +76,14 @@
     root: '/',
     scheme: 'Gemini',
     version: '7.1.2',
-    sidebar: {"position":"left","display":"post","offset":4,"onmobile":false,"dimmer":false},
+    sidebar: {"position":"left","display":"post","offset":4,"onmobile":true,"dimmer":false},
     back2top: true,
     back2top_sidebar: true,
     fancybox: false,
     fastclick: false,
     lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    tabs: false,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -96,17 +100,17 @@
 
 
 
-  <meta name="description" content="在这里说明一下：由于本人正在准备考研，加上最近要期末考试，所以博文更新会不及时。我是抽出空余时间一点一点写的，所以会出现博文不完整、只写了一部分的情况。请不要嫌弃！！！一有时间我就会尽快更新。谢谢！！">
+  <meta name="description" content="在这里说明一下： 由于本人正在准备考研，加上最近要期末考试，所以博文更新会不及时。 我是抽出空余时间一点一点写的，所以会出现博文不完整、只写了一部分的情况。 请不要嫌弃！！！ 一有时间我就会尽快更新。 谢谢！！">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Statement">
 <meta property="og:url" content="http://winslow.cn/2019/06/01/Statement/index.html">
 <meta property="og:site_name" content="范有森的博客">
-<meta property="og:description" content="在这里说明一下：由于本人正在准备考研，加上最近要期末考试，所以博文更新会不及时。我是抽出空余时间一点一点写的，所以会出现博文不完整、只写了一部分的情况。请不要嫌弃！！！一有时间我就会尽快更新。谢谢！！">
+<meta property="og:description" content="在这里说明一下： 由于本人正在准备考研，加上最近要期末考试，所以博文更新会不及时。 我是抽出空余时间一点一点写的，所以会出现博文不完整、只写了一部分的情况。 请不要嫌弃！！！ 一有时间我就会尽快更新。 谢谢！！">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-06-07T10:08:17.481Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Statement">
-<meta name="twitter:description" content="在这里说明一下：由于本人正在准备考研，加上最近要期末考试，所以博文更新会不及时。我是抽出空余时间一点一点写的，所以会出现博文不完整、只写了一部分的情况。请不要嫌弃！！！一有时间我就会尽快更新。谢谢！！">
+<meta name="twitter:description" content="在这里说明一下： 由于本人正在准备考研，加上最近要期末考试，所以博文更新会不及时。 我是抽出空余时间一点一点写的，所以会出现博文不完整、只写了一部分的情况。 请不要嫌弃！！！ 一有时间我就会尽快更新。 谢谢！！">
 
 
 
@@ -476,18 +480,14 @@
 
           
           
-            <span id="/2019/06/01/Statement/" class="leancloud_visitors" data-flag-title="Statement">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
 
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
           
 
           
@@ -503,7 +503,7 @@
                 
                   <span class="post-meta-item-text">字数：</span>
                 
-                <span title="字数">101</span>
+                <span title="字数">106</span>
               
 
               
@@ -537,7 +537,12 @@
       
 
       
-        <p>在这里说明一下：<br>由于本人正在准备考研，加上最近要期末考试，所以博文更新会不及时。<br>我是抽出空余时间一点一点写的，所以会出现博文不完整、只写了一部分的情况。<br>请不要嫌弃！！！<br>一有时间我就会尽快更新。<br>谢谢！！</p>
+        <p>在这里说明一下：<br>
+由于本人正在准备考研，加上最近要期末考试，所以博文更新会不及时。<br>
+我是抽出空余时间一点一点写的，所以会出现博文不完整、只写了一部分的情况。<br>
+请不要嫌弃！！！<br>
+一有时间我就会尽快更新。<br>
+谢谢！！</p>
 
       
     </div>
@@ -589,6 +594,27 @@
       
 
       
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+            
+          </div>
+        
+        </div>
       
       
 
@@ -678,6 +704,10 @@
                 <div class="site-state-item site-state-categories">
                   
                     
+                      <a href="/categories/">
+                    
+                  
+                    
                     
                       
                     
@@ -685,7 +715,7 @@
                     
                     <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">分类</span>
-                  
+                  </a>
                 </div>
               
 
@@ -693,6 +723,10 @@
                 
                 
                 <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
                   
                     
                     
@@ -708,7 +742,7 @@
                     
                     <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">标签</span>
-                  
+                  </a>
                 </div>
               
             </nav>
@@ -806,7 +840,7 @@
     
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
     
-    <span title="阅读时长">10 分钟</span>
+    <span title="阅读时长">15 分钟</span>
   
 </div>
 
@@ -821,6 +855,32 @@
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
 
 
 
@@ -923,6 +983,9 @@
 
 
   
+  <script src="/js/js.cookie.js?v=7.1.2"></script>
+  <script src="/js/scroll-cookie.js?v=7.1.2"></script>
+
 
   
 
@@ -1260,91 +1323,45 @@
 
 
   
+
   
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
   <script>
     
-    function addCount(Counter) {
-      var $visitors = $('.leancloud_visitors');
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
-        .done(function({ results }) {
-          if (results.length > 0) {
-            var counter = results[0];
-            
-            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
-            
-              .done(function() {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.time + 1);
-              })
-            
-              .fail(function ({ responseJSON }) {
-                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
-              })
-          } else {
-            
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! More info at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
-            
-          }
-        })
-        .fail(function ({ responseJSON }) {
-          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
-        });
-    }
+      pbOptions = {};
+      
+        pbOptions.iconStyle = "default";
+      
+        pbOptions.boxForm = "horizontal";
+      
+        pbOptions.position = "topCenter";
+      
+        pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Linkedin";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
     
-
-    $(function() {
-      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'idCjvNp7VLdBNxjpznD0hSSO-gzGzoHsz')
-        .done(function({ api_server }) {
-          var Counter = function(method, url, data) {
-            return $.ajax({
-              method: method,
-              url: 'https://' + api_server + '/1.1' + url,
-              headers: {
-                'X-LC-Id': 'idCjvNp7VLdBNxjpznD0hSSO-gzGzoHsz',
-                'X-LC-Key': 'DMYOw5SiIbMFTs0j18IOFqAn',
-                'Content-Type': 'application/json',
-              },
-              data: data
-            });
-          };
-          
-            addCount(Counter);
-          
-        });
-    });
-  </script>
-
-
-
-  
-
-  
-  
-
-  
-  
-
-  
-
-
-  
-
-  
-
-  
-  <script>
-    (function(){
-      var bp = document.createElement('script');
-      var curProtocol = window.location.protocol.split(':')[0];
-      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(bp, s);
-    })();
+    
   </script>
 
 
@@ -1353,19 +1370,6 @@
   
 
   
-
-  
-
-  
-  
-  
-  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
-  <script>
-  
-    bookmark.scrollToMark('auto', "#更多");
-  
-  </script>
-
 
   
 <script>

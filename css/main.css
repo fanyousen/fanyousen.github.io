@@ -865,83 +865,6 @@ pre .javascript .function {
 .post-body .note.danger h6 {
   color: #d9534f;
 }
-.post-body .tabs {
-  position: relative;
-  display: block;
-  margin-bottom: 20px;
-  padding-top: 10px;
-}
-.post-body .tabs ul.nav-tabs {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: -1px;
-}
-@media (max-width: 413px) {
-  .post-body .tabs ul.nav-tabs {
-    display: block;
-    margin-bottom: 5px;
-  }
-}
-.post-body .tabs ul.nav-tabs li.tab {
-  flex-grow: 1;
-  list-style-type: none;
-  border-top: 3px solid transparent;
-  border-right: 1px solid transparent;
-  border-bottom: 1px solid #ddd;
-  border-left: 1px solid transparent;
-}
-@media (max-width: 413px) {
-  .post-body .tabs ul.nav-tabs li.tab {
-    border-top: 1px solid transparent;
-    border-right: 1px solid transparent;
-    border-bottom: 1px solid transparent;
-    border-left: 3px solid transparent;
-  }
-}
-.post-body .tabs ul.nav-tabs li.tab a {
-  text-align: center;
-  outline: 0;
-  border-bottom: initial;
-  display: block;
-  line-height: 1.8em;
-  padding: 0.25em 0.75em;
-  transition-duration: 0.2s;
-  transition-timing-function: ease-out;
-  transition-delay: 0s;
-}
-.post-body .tabs ul.nav-tabs li.tab a i {
-  width: 1.285714285714286em;
-}
-.post-body .tabs ul.nav-tabs li.tab.active {
-  border-top: 3px solid #fc6423;
-  border-right: 1px solid #ddd;
-  border-bottom: 1px solid transparent;
-  border-left: 1px solid #ddd;
-}
-@media (max-width: 413px) {
-  .post-body .tabs ul.nav-tabs li.tab.active {
-    border-top: 1px solid #ddd;
-    border-right: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-    border-left: 3px solid #fc6423;
-  }
-}
-.post-body .tabs ul.nav-tabs li.tab.active a {
-  cursor: default;
-  color: #555;
-}
-.post-body .tabs .tab-content .tab-pane {
-  border: 1px solid #ddd;
-  padding: 20px 20px 0 20px;
-}
-.post-body .tabs .tab-content .tab-pane:not(.active) {
-  display: none;
-}
-.post-body .tabs .tab-content .tab-pane.active {
-  display: block;
-}
 .btn {
   display: inline-block;
   padding: 0 20px;
@@ -1066,11 +989,6 @@ pre .javascript .function {
 }
 .back-to-top:hover {
   opacity: 0.8;
-}
-@media (max-width: 991px) {
-  .back-to-top {
-    display: none;
-  }
 }
 .back-to-top.back-to-top-on {
   visibility: visible;
@@ -1630,6 +1548,53 @@ pre .javascript .function {
 .post-copyright i.fa {
   font-size: 15px;
 }
+.post-widgets {
+  border-top: 1px solid #eee;
+  padding-top: 9px;
+  margin-top: 45px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.post-widgets .post-meta-divider {
+  height: 25px;
+  color: #999;
+}
+.wp_rating {
+  height: 20px;
+  margin-right: 10px;
+  text-align: center;
+  line-height: 20px;
+  padding-top: 6px;
+}
+.social-like {
+  font-size: 14px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.vk_like {
+  width: 85px;
+  height: 21px;
+  padding-top: 7px;
+  align-self: center;
+}
+.fb_like {
+  height: 30px;
+  align-self: center;
+}
+.bdsharebuttonbox {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+.bdsharebuttonbox a {
+  border: none;
+}
+.bdshare-slide-button-box a {
+  border: none;
+}
 .rtl.post-body p,
 .rtl.post-body a,
 .rtl.post-body h1,
@@ -1677,11 +1642,6 @@ pre .javascript .function {
   color: #eee;
   border-bottom-color: #eee;
 }
-@media (max-width: 991px) {
-  .sidebar {
-    display: none;
-  }
-}
 .sidebar-inner {
   position: relative;
   padding: 20px 10px;
@@ -1725,7 +1685,6 @@ pre .javascript .function {
   .sidebar-toggle {
     opacity: 0.8;
     right: 20px;
-    display: none;
   }
 }
 .sidebar-toggle-line {
@@ -1750,10 +1709,7 @@ pre .javascript .function {
   opacity: 1;
 }
 .site-author-image {
-  transition: transform 1s ease-out;
-}
-.site-author-image:hover {
-  transform: rotateZ(360deg);
+  border-radius: 100%;
 }
 .site-author-name {
   margin: 0;
@@ -1788,7 +1744,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff6e40;
+  background: #511;
 }
 .feed-link,
 .chat {
@@ -2146,6 +2102,29 @@ pre .javascript .function {
   transform: translate(-50%, -50%);
   color: #ccc;
 }
+#needsharebutton-postbottom {
+  position: relative;
+  cursor: pointer;
+  height: 26px;
+}
+#needsharebutton-postbottom .btn {
+  display: initial;
+  padding: 1px 4px;
+  border: 1px solid #555;
+  border-radius: 3px;
+}
+#needsharebutton-float {
+  position: fixed;
+  bottom: 38px;
+  left: -8px;
+  z-index: 9999;
+  cursor: pointer;
+}
+#needsharebutton-float .btn {
+  padding: 0 10px 0 14px;
+  border: 1px solid #555;
+  border-radius: 4px;
+}
 .popular-posts-header {
   margin-top: 60px;
   margin-bottom: 10px;
@@ -2196,10 +2175,6 @@ ul.popular-posts .popular-posts-item .popular-posts-title {
 }
 .highlight-wrap {
   position: relative;
-}
-.has-jax {
-  overflow-x: auto;
-  overflow-y: hidden;
 }
 .page-archive .archive-page-counter {
   position: relative;
