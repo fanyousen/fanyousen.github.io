@@ -496,7 +496,7 @@
                 
                   <span class="post-meta-item-text">字数：</span>
                 
-                <span title="字数">106</span>
+                <span title="字数">101</span>
               
 
               
@@ -533,12 +533,7 @@
         
           
             <p>
-              在这里说明一下：
-由于本人正在准备考研，加上最近要期末考试，所以博文更新会不及时。
-我是抽出空余时间一点一点写的，所以会出现博文不完整、只写了一部分的情况。
-请不要嫌弃！！！
-一有时间我就会尽快更新。
-谢谢！！
+              在这里说明一下：由于本人正在准备考研，加上最近要期末考试，所以博文更新会不及时。我是抽出空余时间一点一点写的，所以会出现博文不完整、只写了一部分的情况。请不要嫌弃！！！一有时间我就会尽快更新。谢谢！！
 
               
             </p>
@@ -707,7 +702,7 @@
                 
                   <span class="post-meta-item-text">字数：</span>
                 
-                <span title="字数">5k</span>
+                <span title="字数">5.1k</span>
               
 
               
@@ -744,8 +739,7 @@
         
           
             <p>
-               遗传算法简介及其基本原理
-  遗传算法（Genetic Algorithm，GA）是由美国密歇根大学心理学教授、电子工程学和计算机科学教授John H. Holland首先提出的一种随机自适应的全局搜索算法。遗传算法吸收了生命科学与工程学科中的重要理论成果，用于解决复杂优化问题。其中，达尔文的进化
+              遗传算法简介及其基本原理&emsp;&emsp;遗传算法（Genetic Algorithm，GA）是由美国密歇根大学心理学教授、电子工程学和计算机科学教授John H. Holland首先提出的一种随机自适应的全局搜索算法。遗传算法吸收了生命科学与工程学科中的重要理论成果，用于解决复杂优化问题。其
               ...
             </p>
           <!--noindex-->
@@ -925,7 +919,7 @@
                 
                   <span class="post-meta-item-text">字数：</span>
                 
-                <span title="字数">3k</span>
+                <span title="字数">2.7k</span>
               
 
               
@@ -939,7 +933,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">4 分钟</span>
+                <span title="阅读时长">3 分钟</span>
               
             </div>
           
@@ -962,9 +956,7 @@
         
           
             <p>
-               最优化问题
-  最优化问题是在科学研究和生产实践中经常遇到的问题。人类所从事的一切生产或社会活动均是有目的的，其行为总是在特定的价值观念或审美取向的支配下进行的，因此经常面临求解一个可行的甚至是最优的方案的决策问题，这就是所谓的最优化问题（Optimization Problem）
-最优化问题的求
+              最优化问题&emsp;&emsp;最优化问题是在科学研究和生产实践中经常遇到的问题。人类所从事的一切生产或社会活动均是有目的的，其行为总是在特定的价值观念或审美取向的支配下进行的，因此经常面临求解一个可行的甚至是最优的方案的决策问题，这就是所谓的最优化问题（Optimization Problem）
               ...
             </p>
           <!--noindex-->
@@ -1144,7 +1136,7 @@
                 
                   <span class="post-meta-item-text">字数：</span>
                 
-                <span title="字数">4.2k</span>
+                <span title="字数">4.1k</span>
               
 
               
@@ -1181,13 +1173,10 @@
         
           
             <p>
-               GitBook的安装
-首先介绍一下gitbook
-gitbook是一个软件，使用markdown来编写，使用git来进行版本控制
-GitBook支持输出多种文档格式,如:
+              GitBook的安装首先介绍一下gitbookgitbook是一个软件，使用markdown来编写，使用git来进行版本控制GitBook支持输出多种文档格式,如:
 
 静态站点:Git默认输出该格式,生成的静态站点可直接托管搭载GitHub Pages服务上
-PDF:需要安装gitbook-
+PDF:需要安装gitbook-pdf依
               ...
             </p>
           <!--noindex-->
@@ -1453,16 +1442,7 @@ PDF:需要安装gitbook-
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
   
-    <span class="post-meta-item-icon">
-      <i class="fa fa-user"></i>
-    </span>
-    <span class="site-uv" title="总访客量">
-      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-    </span>
-  
 
-  
-    <span class="post-meta-divider">|</span>
   
 
   
@@ -1934,8 +1914,42 @@ PDF:需要安装gitbook-
 
   
     
-      <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css">
+      <script type="text/x-mathjax-config">
+  
 
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
     
   
