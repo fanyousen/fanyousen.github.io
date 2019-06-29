@@ -82,8 +82,8 @@
     fancybox: false,
     fastclick: false,
     lazyload: false,
-    tabs: false,
-    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -100,19 +100,19 @@
 
 
 
-  <meta name="description" content="遗传算法简介及其基本原理&amp;emsp;&amp;emsp;遗传算法（Genetic Algorithm，GA）是由美国密歇根大学心理学教授、电子工程学和计算机科学教授John H. Holland首先提出的一种随机自适应的全局搜索算法。遗传算法吸收了生命科学与工程学科中的重要理论成果，用于解决复杂优化问题。其中，达尔文的进化论和以孟德尔的遗传学说为基础的现代遗传学对算法的提出具有最为重要的影响。 &amp;emsp">
+  <meta name="description" content="1. 遗传算法简介及其基本原理&amp;emsp;&amp;emsp;遗传算法（Genetic Algorithm，GA）是由美国密歇根大学心理学教授、电子工程学和计算机科学教授John H. Holland首先提出的一种随机自适应的全局搜索算法。遗传算法吸收了生命科学与工程学科中的重要理论成果，用于解决复杂优化问题。其中，达尔文的进化论和以孟德尔的遗传学说为基础的现代遗传学对算法的提出具有最为重要的影响。 &amp;e">
 <meta name="keywords" content="算法,计算智能">
 <meta property="og:type" content="article">
-<meta property="og:title" content="遗传算法及其实现">
+<meta property="og:title" content="遗传算法简介及其实现">
 <meta property="og:url" content="http://winslow.cn/2019/06/04/遗传算法简介及其实现/index.html">
-<meta property="og:site_name" content="范有森的博客">
-<meta property="og:description" content="遗传算法简介及其基本原理&amp;emsp;&amp;emsp;遗传算法（Genetic Algorithm，GA）是由美国密歇根大学心理学教授、电子工程学和计算机科学教授John H. Holland首先提出的一种随机自适应的全局搜索算法。遗传算法吸收了生命科学与工程学科中的重要理论成果，用于解决复杂优化问题。其中，达尔文的进化论和以孟德尔的遗传学说为基础的现代遗传学对算法的提出具有最为重要的影响。 &amp;emsp">
+<meta property="og:site_name" content="WINSLOW">
+<meta property="og:description" content="1. 遗传算法简介及其基本原理&amp;emsp;&amp;emsp;遗传算法（Genetic Algorithm，GA）是由美国密歇根大学心理学教授、电子工程学和计算机科学教授John H. Holland首先提出的一种随机自适应的全局搜索算法。遗传算法吸收了生命科学与工程学科中的重要理论成果，用于解决复杂优化问题。其中，达尔文的进化论和以孟德尔的遗传学说为基础的现代遗传学对算法的提出具有最为重要的影响。 &amp;e">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://winslow.cn/2019/06/04/遗传算法简介及其实现/遗传算法流程图.png">
-<meta property="og:updated_time" content="2019-06-08T01:40:19.859Z">
+<meta property="og:updated_time" content="2019-06-28T16:31:21.534Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="遗传算法及其实现">
-<meta name="twitter:description" content="遗传算法简介及其基本原理&amp;emsp;&amp;emsp;遗传算法（Genetic Algorithm，GA）是由美国密歇根大学心理学教授、电子工程学和计算机科学教授John H. Holland首先提出的一种随机自适应的全局搜索算法。遗传算法吸收了生命科学与工程学科中的重要理论成果，用于解决复杂优化问题。其中，达尔文的进化论和以孟德尔的遗传学说为基础的现代遗传学对算法的提出具有最为重要的影响。 &amp;emsp">
+<meta name="twitter:title" content="遗传算法简介及其实现">
+<meta name="twitter:description" content="1. 遗传算法简介及其基本原理&amp;emsp;&amp;emsp;遗传算法（Genetic Algorithm，GA）是由美国密歇根大学心理学教授、电子工程学和计算机科学教授John H. Holland首先提出的一种随机自适应的全局搜索算法。遗传算法吸收了生命科学与工程学科中的重要理论成果，用于解决复杂优化问题。其中，达尔文的进化论和以孟德尔的遗传学说为基础的现代遗传学对算法的提出具有最为重要的影响。 &amp;e">
 <meta name="twitter:image" content="http://winslow.cn/2019/06/04/遗传算法简介及其实现/遗传算法流程图.png">
 
 
@@ -131,7 +131,7 @@
   };
 </script>
 
-  <title>遗传算法及其实现 | 范有森的博客</title>
+  <title>遗传算法简介及其实现 | WINSLOW</title>
   
 
 
@@ -200,7 +200,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">范有森的博客</span>
+        <span class="site-title">WINSLOW</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -281,7 +281,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">5</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">12</span></a>
 
   </li>
         
@@ -300,7 +300,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-briefcase"></i> <br>分类<span class="badge">2</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-briefcase"></i> <br>分类<span class="badge">4</span></a>
 
   </li>
         
@@ -319,7 +319,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">4</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">6</span></a>
 
   </li>
         
@@ -430,7 +430,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="范有森的博客">
+      <meta itemprop="name" content="WINSLOW">
     </span>
 
     
@@ -438,7 +438,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">遗传算法及其实现
+          <h2 class="post-title" itemprop="name headline">遗传算法简介及其实现
 
               
             
@@ -524,7 +524,7 @@
                 
                   <span class="post-meta-item-text">字数：</span>
                 
-                <span title="字数">5.1k</span>
+                <span title="字数">4.7k</span>
               
 
               
@@ -558,7 +558,7 @@
       
 
       
-        <h1 id="遗传算法简介及其基本原理"><a href="#遗传算法简介及其基本原理" class="headerlink" title="遗传算法简介及其基本原理"></a>遗传算法简介及其基本原理</h1><p>&emsp;&emsp;<strong>遗传算法</strong>（Genetic Algorithm，GA）是由美国密歇根大学心理学教授、电子工程学和计算机科学教授John H. Holland首先提出的一种随机自适应的全局搜索算法。遗传算法吸收了生命科学与工程学科中的重要理论成果，用于解决复杂优化问题。其中，达尔文的进化论和以孟德尔的遗传学说为基础的现代遗传学对算法的提出具有最为重要的影响。</p>
+        <h1 id="1-遗传算法简介及其基本原理"><a href="#1-遗传算法简介及其基本原理" class="headerlink" title="1. 遗传算法简介及其基本原理"></a>1. 遗传算法简介及其基本原理</h1><p>&emsp;&emsp;<strong>遗传算法</strong>（Genetic Algorithm，GA）是由美国密歇根大学心理学教授、电子工程学和计算机科学教授John H. Holland首先提出的一种随机自适应的全局搜索算法。遗传算法吸收了生命科学与工程学科中的重要理论成果，用于解决复杂优化问题。其中，达尔文的进化论和以孟德尔的遗传学说为基础的现代遗传学对算法的提出具有最为重要的影响。</p>
 <p>&emsp;&emsp;生物的进化过程是一个不断往复的循环过程。在每个循环中，由于自然环境的恶劣、资源的短缺和天敌的侵害等因素，个体必须接受自然的选择。在选择过程中，一部分对自然环境具有较高适应能力的个体得以保存下来形成新的种群。而另一部分个体则由于不适应自然环境而面临被淘汰的危险。经过选择保存下来的群体构成种群，种群中的生物个体进行交配繁衍，保证了种群的发展。交配产生的子代继承了父代的部分特性，而且一般来说，子代要比父代具有更强的环境适应能力。进化过程伴随着种群的变异，种群中部分个体发生基因变异，成为新的个体。这样，经过选择、交配和变异后的种群取代了原来的种群，进入下一个循环。</p>
 <p>&emsp;&emsp;遗传算法正是通过模拟自然界中生物的遗传进化过程，对优化问题的最优解进行搜索。算法维护一个代表问题潜在解得群体，对于群体的优化，算法引入了类似自然进化中选择、交配以及变异等算子。遗传算法搜索全局最优解的过程是一个不断迭代的过程（每一次迭代相当于生物进化中的一次循环），知道满足算法的终止条件为止。</p>
 <p>&emsp;&emsp;在遗传算法中，问题的每个有效解被称为一个“<strong>染色体</strong>（chromosome）”，相对于群体中的每个生物<strong>个体</strong>（individual）。染色体的具体形式是一个使用特定编码方式生成的编码串。编码串中的每一个编码单元称为“<strong>基因</strong>（gene）”。</p>
@@ -611,7 +611,7 @@
 </tbody>
 </table>
 </div>
-<h1 id="遗传算法的流程"><a href="#遗传算法的流程" class="headerlink" title="遗传算法的流程"></a>遗传算法的流程</h1><p>遗传算法的实现主要包括了一下七个重要问题</p>
+<h1 id="2-遗传算法的流程"><a href="#2-遗传算法的流程" class="headerlink" title="2. 遗传算法的流程"></a>2. 遗传算法的流程</h1><p>遗传算法的实现主要包括了一下七个重要问题</p>
 <ul>
 <li>染色体的编码</li>
 <li>群体的初始化</li>
@@ -622,9 +622,9 @@
 <li>算法流程</li>
 </ul>
 <p>&emsp;&emsp;这个几个问题尤其是选择算子、交配算子和变异算子的具体实现与算法搜索全局最优解的能力息息相关。在处理不同优化问题时，以上几个方面可能需要根据问题的特定情况采用不同的方法实现，以提高遗传算法的性能。</p>
-<h2 id="染色体编码"><a href="#染色体编码" class="headerlink" title="染色体编码"></a>染色体编码</h2><p>&emsp;&emsp;应用遗传算法，需要解决问题解的表示，即染色体的编码方式。染色体编码方式确定是否得当会对接下来染色体的交配和变异操作构成影响。在使用遗传算法解决具体问题时，采用何种编码方案不是一概而论的，应尽量分析问题的特点，制定可行的编码方案。</p>
+<h2 id="2-1-染色体编码"><a href="#2-1-染色体编码" class="headerlink" title="2.1. 染色体编码"></a>2.1. 染色体编码</h2><p>&emsp;&emsp;应用遗传算法，需要解决问题解的表示，即染色体的编码方式。染色体编码方式确定是否得当会对接下来染色体的交配和变异操作构成影响。在使用遗传算法解决具体问题时，采用何种编码方案不是一概而论的，应尽量分析问题的特点，制定可行的编码方案。</p>
 <p>&emsp;&emsp;目前用于染色体编码的方法有格雷码编码、字母编码、多参数交叉编码等。下面仅介绍<strong>二进制编码方法</strong>（Binary Representation）和<strong>浮点数编码方法</strong>（Float Point Representation）</p>
-<h3 id="二进制编码方式"><a href="#二进制编码方式" class="headerlink" title="二进制编码方式"></a>二进制编码方式</h3><p>&emsp;&emsp;二进制编码方法产生的染色体是一个二进制符号序列，染色体的每一个基因只能取值$0$或$1$。假定问题定义的有效解空间为$[U_{min},U_{max}]^D$,其中$D$为有效解得变量维数，使用$L$位二进制符号串表示解的一维变量，则得到如下表所示的编码方式：</p>
+<h3 id="2-1-1-二进制编码方式"><a href="#2-1-1-二进制编码方式" class="headerlink" title="2.1.1. 二进制编码方式"></a>2.1.1. 二进制编码方式</h3><p>&emsp;&emsp;二进制编码方法产生的染色体是一个二进制符号序列，染色体的每一个基因只能取值$0$或$1$。假定问题定义的有效解空间为$[U_{min},U_{max}]^D$,其中$D$为有效解得变量维数，使用$L$位二进制符号串表示解的一维变量，则得到如下表所示的编码方式：</p>
 <div class="table-container">
 <table>
 <thead>
@@ -651,28 +651,20 @@
 </div>
 <p>&emsp;&emsp;例如，假设$[U_{min},U_{max}]为[1,64]$，采用$6$为二进制符号串进行编码，则某个二进制符号串$010101$代表了数值$22$</p>
 <p>&emsp;&emsp;因此采用$L$位进行编码时的精度为$\frac{U_{max}-U_{min}}{2^L-1}$，可见该种方法在编码的精度方面是较差的。当要求采用较高的精度或表示较大范围的数时，必须通过增加$L$来达到要求。可是当$L$变得很大时，将增加算法操作复杂度和运算量。所以二进制编码在解决某些精度要求较高或解含有多个变量的优化问题时，表现得不尽人意。</p>
-<h3 id="浮点数编码方式"><a href="#浮点数编码方式" class="headerlink" title="浮点数编码方式"></a>浮点数编码方式</h3><p>&emsp;&emsp;浮点数编码方法中，染色体的长度等于问题定义的解的变量个数，染色体的每一个基因等于解的每一维变量。例如待求解问题的一个有效解为$X_i=(x_{i}^{1},x_{i}^{2},···,x_{i}^{D-1},x_{i}^{D})$，其中D为解的变量维数。则该解对应的染色体编码为$(x_{i}^{1},x_{i}^{2},···,x_{i}^{D-1},x_{i}^{D})$。</p>
+<h3 id="2-1-2-浮点数编码方式"><a href="#2-1-2-浮点数编码方式" class="headerlink" title="2.1.2. 浮点数编码方式"></a>2.1.2. 浮点数编码方式</h3><p>&emsp;&emsp;浮点数编码方法中，染色体的长度等于问题定义的解的变量个数，染色体的每一个基因等于解的每一维变量。例如待求解问题的一个有效解为$X_i=(x_{i}^{1},x_{i}^{2},···,x_{i}^{D-1},x_{i}^{D})$，其中D为解的变量维数。则该解对应的染色体编码为$(x_{i}^{1},x_{i}^{2},···,x_{i}^{D-1},x_{i}^{D})$。</p>
 <p>&emsp;&emsp;浮点数编码方式适合于表示取值范围较大的数值，对降低采用遗传算法对染色体进行处理的复杂性起到了很好的作用。</p>
-<h2 id="群体的初始化"><a href="#群体的初始化" class="headerlink" title="群体的初始化"></a>群体的初始化</h2><p>&emsp;&emsp;遗传算法在一个给定的初始化进化种群中进行迭代搜索。一般情况下，在群体初始化阶段采用的是随机数初始方法。采用生成随机数的方式，对染色体的每一维变量进行初始化赋值。如果在初始化时保证初始群体已经是一定程度上的优良群体的话，将能够有效提高算法找到全局最优解的能力。</p>
-<h2 id="适应值评价"><a href="#适应值评价" class="headerlink" title="适应值评价"></a>适应值评价</h2><p>&emsp;&emsp;评价函数用于评估各个染色体的适应值，进而区分优劣。评价函数常常根据问题的优化目标来确定，如在求解函数优化问题时，问题定义的目标函数可以作为评价函数的原型。对于求解最大值的问题，可以按照遗传算法的规定认为适应值越大染色体越优。对于其他优化问题，问题定义的目标函数必须经过一定的变换。例如，应用求解某个函数的最小值，可对问题定义的目标函数$f(X)$进行以下变换，得到算法的评价函数$Eval(C)$</p>
+<h2 id="2-2-群体的初始化"><a href="#2-2-群体的初始化" class="headerlink" title="2.2. 群体的初始化"></a>2.2. 群体的初始化</h2><p>&emsp;&emsp;遗传算法在一个给定的初始化进化种群中进行迭代搜索。一般情况下，在群体初始化阶段采用的是随机数初始方法。采用生成随机数的方式，对染色体的每一维变量进行初始化赋值。如果在初始化时保证初始群体已经是一定程度上的优良群体的话，将能够有效提高算法找到全局最优解的能力。</p>
+<h2 id="2-3-适应值评价"><a href="#2-3-适应值评价" class="headerlink" title="2.3. 适应值评价"></a>2.3. 适应值评价</h2><p>&emsp;&emsp;评价函数用于评估各个染色体的适应值，进而区分优劣。评价函数常常根据问题的优化目标来确定，如在求解函数优化问题时，问题定义的目标函数可以作为评价函数的原型。对于求解最大值的问题，可以按照遗传算法的规定认为适应值越大染色体越优。对于其他优化问题，问题定义的目标函数必须经过一定的变换。例如，应用求解某个函数的最小值，可对问题定义的目标函数$f(X)$进行以下变换，得到算法的评价函数$Eval(C)$</p>
 <script type="math/tex; mode=display">Eval(C) = - f(X)</script><p>其中$X$表示一个有效解，$C$表示$X$对应的染色体。</p>
-<h2 id="选择算子"><a href="#选择算子" class="headerlink" title="选择算子"></a>选择算子</h2><p>&emsp;&emsp;种群的选择操作使用<strong>轮盘赌选择算法</strong>（roulette wheel selection）。轮盘赌选择算法是遗传算法中最经常使用的选择算法，其基本思想是基于概率的随机选择。<br>&emsp;&emsp;轮盘赌选择算法首先根据群体中每个染色体的适应值得到群体所有染色体的适应值总和，并分别计算每个染色体适应值与群体适应值总和的比$P_i$；其次假设一个具有$N$个扇区的轮盘，每个扇区对应群体中的一个染色体，扇区的大小与对应染色体的$P_i$成正比关系。<br>&emsp;&emsp;每次选择就转动一次轮盘，轮盘转动停止时指针停留的扇区对应的染色体即被选中进入种群。一次进行$N$次选择即可得到规模同样为$N$的种群。较优染色体的$P$值较大，被选择的概率也就相对较大。但由于选择过程具有随机性，并不能保证每次选择均选中这些较优的染色体，因此较差染色体也有一定的生存空间。</p>
-<h2 id="交配算子"><a href="#交配算子" class="headerlink" title="交配算子"></a>交配算子</h2><p>&emsp;&emsp;在染色体交配阶段,每个染色体能否进行交配由交配概率$P_c$(一般取值为$0.4~0.99$之间)决定，其具体过程为：对于每个染色体，如果$Random(0,1)$小于$P_c$则表示该染色体可进行交配操作，其中$Random(0,1)$为$[0,1]$间均匀分布的随机数产生器，否则染色体不参与交配直接复制到新种群中。<br>&emsp;&emsp;每两个按照$P_c$交配概率选择出来的染色体进行交配，经过交换各自的部分基因，产生两个新的子代染色体。其具体操作是随机产生一个有效的交配位置，染色体交换位于该交配位置后的所有基因。参与交配的父代染色体个数与产生的子代染色体个数一样，因此新种群的规模依然为$N$。</p>
-<h2 id="变异算子"><a href="#变异算子" class="headerlink" title="变异算子"></a>变异算子</h2><p>&emsp;&emsp;染色体的编译作用于基因之上，对于交配后新种群中染色体的每一位基因，根据变异概率$P_m$判断该基因是否变异。如果$Random(0,1)$小于$P_m$，则改变该基因的取值；否则该基因不发生变异，保持不变。</p>
+<h2 id="2-4-选择算子"><a href="#2-4-选择算子" class="headerlink" title="2.4. 选择算子"></a>2.4. 选择算子</h2><p>&emsp;&emsp;种群的选择操作使用<strong>轮盘赌选择算法</strong>（roulette wheel selection）。轮盘赌选择算法是遗传算法中最经常使用的选择算法，其基本思想是基于概率的随机选择。<br>&emsp;&emsp;轮盘赌选择算法首先根据群体中每个染色体的适应值得到群体所有染色体的适应值总和，并分别计算每个染色体适应值与群体适应值总和的比$P_i$；其次假设一个具有$N$个扇区的轮盘，每个扇区对应群体中的一个染色体，扇区的大小与对应染色体的$P_i$成正比关系。<br>&emsp;&emsp;每次选择就转动一次轮盘，轮盘转动停止时指针停留的扇区对应的染色体即被选中进入种群。一次进行$N$次选择即可得到规模同样为$N$的种群。较优染色体的$P$值较大，被选择的概率也就相对较大。但由于选择过程具有随机性，并不能保证每次选择均选中这些较优的染色体，因此较差染色体也有一定的生存空间。</p>
+<h2 id="2-5-交配算子"><a href="#2-5-交配算子" class="headerlink" title="2.5. 交配算子"></a>2.5. 交配算子</h2><p>&emsp;&emsp;在染色体交配阶段,每个染色体能否进行交配由交配概率$P_c$(一般取值为$0.4~0.99$之间)决定，其具体过程为：对于每个染色体，如果$Random(0,1)$小于$P_c$则表示该染色体可进行交配操作，其中$Random(0,1)$为$[0,1]$间均匀分布的随机数产生器，否则染色体不参与交配直接复制到新种群中。<br>&emsp;&emsp;每两个按照$P_c$交配概率选择出来的染色体进行交配，经过交换各自的部分基因，产生两个新的子代染色体。其具体操作是随机产生一个有效的交配位置，染色体交换位于该交配位置后的所有基因。参与交配的父代染色体个数与产生的子代染色体个数一样，因此新种群的规模依然为$N$。</p>
+<h2 id="2-6-变异算子"><a href="#2-6-变异算子" class="headerlink" title="2.6. 变异算子"></a>2.6. 变异算子</h2><p>&emsp;&emsp;染色体的编译作用于基因之上，对于交配后新种群中染色体的每一位基因，根据变异概率$P_m$判断该基因是否变异。如果$Random(0,1)$小于$P_m$，则改变该基因的取值；否则该基因不发生变异，保持不变。</p>
 <p>&emsp;&emsp;为了保持遗传算法较好的运行性能，变异概率$P_m$应该设置在一个合适的范围内。变异操作通过改变原有染色体的基因，在提高群体多样性方面具有明显的促进作用。如果$P_m$过小，算法容易早熟，在算法运行过程中，已找到的较优解可能在变异过程中遭到破坏；如果$P_m$过大，可能会导致算法目前所处的较好的搜索状态倒退回到原来较差的情况。因此，应该讲种群的变异限制在一定范围内。一般地，$P_m$可设定在$0.001~0.1之间$</p>
-<h2 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h2><p>遗传算法的基本步骤：</p>
+<h2 id="2-7-算法流程"><a href="#2-7-算法流程" class="headerlink" title="2.7. 算法流程"></a>2.7. 算法流程</h2><p>遗传算法的基本步骤：</p>
 <p>$1.$ 初始化规模为$N$的群体，其中染色体每个基因的值采用随机数产生器生成。当前进化代数$Generation=0$<br>$2.$ 采用评价函数对群体中所有染色体进行评价，分别计算每个染色体的适应值，保存适应值最大的染色体$Best$<br>$3.$ 采用轮盘赌选择算法对群体中的染色体进行选择操作，产生规模同为$N$的种群。<br>$4.$ 按照概率$P_c$从种群中选择染色体进行交配。每两个进行交配的父代染色体，交换部分基因，产生两个新的子代染色体，子代染色体取代父代染色体进入新种群。没有进行交配的染色体则直接复制进入新种群。<br>$5.$ 按照概率$P_m$对新种群中染色体的基因进行变异操作。发生变异的基因数值发生改变。变异后的染色体取代原有染色体进入新群体，未发生变异的染色体直接进入新群体。<br>$6.$ 变异后的新群体取代原有群体，重新计算群体中各个染色体的适应值。倘若群体的最大适应值大于$Best$，则以该最大适应值对应的染色体替代$Best$<br>$7.$ 当前进化代数$Generation$加$1$。如果$Generation$超过规定的最大进化代数或$Best$达到规定的误差要求，算法结束；否则回到步骤$3$</p>
-<ol>
-<li>初始化规模为$N$的群体，其中染色体每个基因的值采用随机数产生器生成。当前进化代数$Generation=0$ </li>
-<li>采用评价函数对群体中所有染色体进行评价，分别计算每个染色体的适应值，保存适应值最大的染色体$Best$ </li>
-<li>采用轮盘赌选择算法对群体中的染色体进行选择操作，产生规模同为$N$的种群。</li>
-<li>按照概率$P_c$从种群中选择染色体进行交配。每两个进行交配的父代染色体，交换部分基因，产生两个新的子代染色体，子代染色体取代父代染色体进入新种群。没有进行交配的染色体则直接复制进入新种群。</li>
-<li>按照概率$P_m$对新种群中染色体的基因进行变异操作。发生变异的基因数值发生改变。变异后的染色体取代原有染色体进入新群体，未发生变异的染色体直接进入新群体。</li>
-<li>变异后的新群体取代原有群体，重新计算群体中各个染色体的适应值。倘若群体的最大适应值大于$Best$，则以该最大适应值对应的染色体替代$Best$</li>
-<li>当前进化代数$Generation$加$1$。如果$Generation$超过规定的最大进化代数或$Best$达到规定的误差要求，算法结束；否则回到步骤$3$</li>
-</ol>
 <p>注：染色体的交配和变异操作均是在选择后进行的。</p>
 <p><img src="遗传算法流程图.png" alt></p>
+<h1 id="3-遗传算法的实现-Python"><a href="#3-遗传算法的实现-Python" class="headerlink" title="3. 遗传算法的实现(Python)"></a>3. 遗传算法的实现(Python)</h1><p>未完待续</p>
 
       
     </div>
@@ -723,7 +715,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="http://winslow.cn/2019/06/04/遗传算法简介及其实现/" title="遗传算法及其实现">http://winslow.cn/2019/06/04/遗传算法简介及其实现/</a>
+    <a href="http://winslow.cn/2019/06/04/遗传算法简介及其实现/" title="遗传算法简介及其实现">http://winslow.cn/2019/06/04/遗传算法简介及其实现/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -784,6 +776,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/17/数学之美中的一段话/" rel="prev" title="吴军《数学之美》中的一段话，看了很有感触">
+                吴军《数学之美》中的一段话，看了很有感触 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -854,7 +850,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -875,7 +871,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -902,7 +902,21 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -966,7 +980,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#遗传算法简介及其基本原理"><span class="nav-number">1.</span> <span class="nav-text">遗传算法简介及其基本原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#遗传算法的流程"><span class="nav-number">2.</span> <span class="nav-text">遗传算法的流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#染色体编码"><span class="nav-number">2.1.</span> <span class="nav-text">染色体编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二进制编码方式"><span class="nav-number">2.1.1.</span> <span class="nav-text">二进制编码方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浮点数编码方式"><span class="nav-number">2.1.2.</span> <span class="nav-text">浮点数编码方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#群体的初始化"><span class="nav-number">2.2.</span> <span class="nav-text">群体的初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#适应值评价"><span class="nav-number">2.3.</span> <span class="nav-text">适应值评价</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择算子"><span class="nav-number">2.4.</span> <span class="nav-text">选择算子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#交配算子"><span class="nav-number">2.5.</span> <span class="nav-text">交配算子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变异算子"><span class="nav-number">2.6.</span> <span class="nav-text">变异算子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法流程"><span class="nav-number">2.7.</span> <span class="nav-text">算法流程</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-遗传算法简介及其基本原理"><span class="nav-text">1. 遗传算法简介及其基本原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-遗传算法的流程"><span class="nav-text">2. 遗传算法的流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-染色体编码"><span class="nav-text">2.1. 染色体编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-1-二进制编码方式"><span class="nav-text">2.1.1. 二进制编码方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-2-浮点数编码方式"><span class="nav-text">2.1.2. 浮点数编码方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-群体的初始化"><span class="nav-text">2.2. 群体的初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-适应值评价"><span class="nav-text">2.3. 适应值评价</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-选择算子"><span class="nav-text">2.4. 选择算子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-交配算子"><span class="nav-text">2.5. 交配算子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-变异算子"><span class="nav-text">2.6. 变异算子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-算法流程"><span class="nav-text">2.7. 算法流程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-遗传算法的实现-Python"><span class="nav-text">3. 遗传算法的实现(Python)</span></a></li></ol></div>
             
 
           </div>
@@ -1008,7 +1022,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">12k</span>
+    <span title="站点总字数">18k</span>
   
 
   
@@ -1019,7 +1033,7 @@
     
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
     
-    <span title="阅读时长">15 分钟</span>
+    <span title="阅读时长">21 分钟</span>
   
 </div>
 
@@ -1160,6 +1174,15 @@
   
 
   
+  
+  
+
+  
+
+  
+  
+  
+
 
   
 
@@ -1548,6 +1571,26 @@
   
 
   
+<script>
+if ($('body').find('pre.mermaid').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      mermaid.initialize({
+        theme: 'forest',
+        logLevel: 3,
+        flowchart: { curve: 'linear' },
+        gantt: { axisFormat: '%m/%d/%Y' },
+        sequence: { actorMargin: 50 }
+      });
+    }
+  });
+}
+</script>
+
 
   
 
