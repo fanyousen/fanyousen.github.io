@@ -103,15 +103,15 @@
   <meta name="description" content="1. 遗传算法简介及其基本原理&amp;emsp;&amp;emsp;遗传算法（Genetic Algorithm，GA）是由美国密歇根大学心理学教授、电子工程学和计算机科学教授John H. Holland首先提出的一种随机自适应的全局搜索算法。遗传算法吸收了生命科学与工程学科中的重要理论成果，用于解决复杂优化问题。其中，达尔文的进化论和以孟德尔的遗传学说为基础的现代遗传学对算法的提出具有最为重要的影响。 &amp;e">
 <meta name="keywords" content="算法,计算智能">
 <meta property="og:type" content="article">
-<meta property="og:title" content="遗传算法简介及其实现">
+<meta property="og:title" content="遗传算法简介">
 <meta property="og:url" content="http://winslow.cn/2019/06/04/遗传算法简介及其实现/index.html">
 <meta property="og:site_name" content="WINSLOW">
 <meta property="og:description" content="1. 遗传算法简介及其基本原理&amp;emsp;&amp;emsp;遗传算法（Genetic Algorithm，GA）是由美国密歇根大学心理学教授、电子工程学和计算机科学教授John H. Holland首先提出的一种随机自适应的全局搜索算法。遗传算法吸收了生命科学与工程学科中的重要理论成果，用于解决复杂优化问题。其中，达尔文的进化论和以孟德尔的遗传学说为基础的现代遗传学对算法的提出具有最为重要的影响。 &amp;e">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://winslow.cn/2019/06/04/遗传算法简介及其实现/遗传算法流程图.png">
-<meta property="og:updated_time" content="2019-06-28T16:31:21.534Z">
+<meta property="og:updated_time" content="2019-07-20T09:04:10.396Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="遗传算法简介及其实现">
+<meta name="twitter:title" content="遗传算法简介">
 <meta name="twitter:description" content="1. 遗传算法简介及其基本原理&amp;emsp;&amp;emsp;遗传算法（Genetic Algorithm，GA）是由美国密歇根大学心理学教授、电子工程学和计算机科学教授John H. Holland首先提出的一种随机自适应的全局搜索算法。遗传算法吸收了生命科学与工程学科中的重要理论成果，用于解决复杂优化问题。其中，达尔文的进化论和以孟德尔的遗传学说为基础的现代遗传学对算法的提出具有最为重要的影响。 &amp;e">
 <meta name="twitter:image" content="http://winslow.cn/2019/06/04/遗传算法简介及其实现/遗传算法流程图.png">
 
@@ -131,7 +131,7 @@
   };
 </script>
 
-  <title>遗传算法简介及其实现 | WINSLOW</title>
+  <title>遗传算法简介 | WINSLOW</title>
   
 
 
@@ -438,7 +438,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">遗传算法简介及其实现
+          <h2 class="post-title" itemprop="name headline">遗传算法简介
 
               
             
@@ -663,27 +663,10 @@
 <h2 id="2-7-算法流程"><a href="#2-7-算法流程" class="headerlink" title="2.7. 算法流程"></a>2.7. 算法流程</h2><p>遗传算法的基本步骤：</p>
 <p>$1.$ 初始化规模为$N$的群体，其中染色体每个基因的值采用随机数产生器生成。当前进化代数$Generation=0$<br>$2.$ 采用评价函数对群体中所有染色体进行评价，分别计算每个染色体的适应值，保存适应值最大的染色体$Best$<br>$3.$ 采用轮盘赌选择算法对群体中的染色体进行选择操作，产生规模同为$N$的种群。<br>$4.$ 按照概率$P_c$从种群中选择染色体进行交配。每两个进行交配的父代染色体，交换部分基因，产生两个新的子代染色体，子代染色体取代父代染色体进入新种群。没有进行交配的染色体则直接复制进入新种群。<br>$5.$ 按照概率$P_m$对新种群中染色体的基因进行变异操作。发生变异的基因数值发生改变。变异后的染色体取代原有染色体进入新群体，未发生变异的染色体直接进入新群体。<br>$6.$ 变异后的新群体取代原有群体，重新计算群体中各个染色体的适应值。倘若群体的最大适应值大于$Best$，则以该最大适应值对应的染色体替代$Best$<br>$7.$ 当前进化代数$Generation$加$1$。如果$Generation$超过规定的最大进化代数或$Best$达到规定的误差要求，算法结束；否则回到步骤$3$</p>
 <p>注：染色体的交配和变异操作均是在选择后进行的。</p>
-<p><img src="遗传算法流程图.png" alt></p>
-<h1 id="3-遗传算法的实现-Python"><a href="#3-遗传算法的实现-Python" class="headerlink" title="3. 遗传算法的实现(Python)"></a>3. 遗传算法的实现(Python)</h1><p>未完待续</p>
+<p><img src="遗传算法流程图.png" alt="遗传算法流程图"></p>
 
       
     </div>
-
-    
-      
-
-  <div class="popular-posts-header">相关文章</div>
-  <ul class="popular-posts">
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="\2019\06\04\最优化问题\" rel="bookmark">计算智能——最优化问题</a></div>
-      
-    </li>
-  
-  </ul>
-
 
     
 
@@ -715,7 +698,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="http://winslow.cn/2019/06/04/遗传算法简介及其实现/" title="遗传算法简介及其实现">http://winslow.cn/2019/06/04/遗传算法简介及其实现/</a>
+    <a href="http://winslow.cn/2019/06/04/遗传算法简介及其实现/" title="遗传算法简介">http://winslow.cn/2019/06/04/遗传算法简介及其实现/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -980,7 +963,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-遗传算法简介及其基本原理"><span class="nav-text">1. 遗传算法简介及其基本原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-遗传算法的流程"><span class="nav-text">2. 遗传算法的流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-染色体编码"><span class="nav-text">2.1. 染色体编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-1-二进制编码方式"><span class="nav-text">2.1.1. 二进制编码方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-2-浮点数编码方式"><span class="nav-text">2.1.2. 浮点数编码方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-群体的初始化"><span class="nav-text">2.2. 群体的初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-适应值评价"><span class="nav-text">2.3. 适应值评价</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-选择算子"><span class="nav-text">2.4. 选择算子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-交配算子"><span class="nav-text">2.5. 交配算子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-变异算子"><span class="nav-text">2.6. 变异算子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-算法流程"><span class="nav-text">2.7. 算法流程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-遗传算法的实现-Python"><span class="nav-text">3. 遗传算法的实现(Python)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-遗传算法简介及其基本原理"><span class="nav-text">1. 遗传算法简介及其基本原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-遗传算法的流程"><span class="nav-text">2. 遗传算法的流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-染色体编码"><span class="nav-text">2.1. 染色体编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-1-二进制编码方式"><span class="nav-text">2.1.1. 二进制编码方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-2-浮点数编码方式"><span class="nav-text">2.1.2. 浮点数编码方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-群体的初始化"><span class="nav-text">2.2. 群体的初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-适应值评价"><span class="nav-text">2.3. 适应值评价</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-选择算子"><span class="nav-text">2.4. 选择算子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-交配算子"><span class="nav-text">2.5. 交配算子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-变异算子"><span class="nav-text">2.6. 变异算子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-算法流程"><span class="nav-text">2.7. 算法流程</span></a></li></ol></li></ol></div>
             
 
           </div>
