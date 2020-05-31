@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -42,6 +42,38 @@
 
 
 
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=微软雅黑:300,300italic,400,400italic,700,700italic|Microsoft Yahei:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
 
 
 
@@ -83,7 +115,7 @@
     fastclick: false,
     lazyload: false,
     tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -100,20 +132,18 @@
 
 
 
-  <meta name="description" content="1. 遗传算法简介及其基本原理&amp;emsp;&amp;emsp;遗传算法（Genetic Algorithm，GA）是由美国密歇根大学心理学教授、电子工程学和计算机科学教授John H. Holland首先提出的一种随机自适应的全局搜索算法。遗传算法吸收了生命科学与工程学科中的重要理论成果，用于解决复杂优化问题。其中，达尔文的进化论和以孟德尔的遗传学说为基础的现代遗传学对算法的提出具有最为重要的影响。 &amp;e">
-<meta name="keywords" content="算法,计算智能">
+  <meta name="description" content="1. C语言的数据表现形式1.1. 常量和变量在C语言中，数据有两种表现形式：常量和变量 1.1.1. 常量 在程序运行过程中，其值不能改变的量称为常量  常用的常量有以下几种： （1）整型常量整型常量即整数（没有小数部分），如123，-90，87等都是整型常量 （2）实型常量实型常量即实数（可以表示带有小数的数），实型常量有两种表示形式：十进制小数形式：如123.123，0.454，-98.98">
+<meta name="keywords" content="C语言">
 <meta property="og:type" content="article">
-<meta property="og:title" content="遗传算法简介">
-<meta property="og:url" content="http://winslow.cn/2019/06/04/遗传算法简介及其实现/index.html">
-<meta property="og:site_name" content="WINSLOW">
-<meta property="og:description" content="1. 遗传算法简介及其基本原理&amp;emsp;&amp;emsp;遗传算法（Genetic Algorithm，GA）是由美国密歇根大学心理学教授、电子工程学和计算机科学教授John H. Holland首先提出的一种随机自适应的全局搜索算法。遗传算法吸收了生命科学与工程学科中的重要理论成果，用于解决复杂优化问题。其中，达尔文的进化论和以孟德尔的遗传学说为基础的现代遗传学对算法的提出具有最为重要的影响。 &amp;e">
+<meta property="og:title" content="C语言基本数据类型">
+<meta property="og:url" content="http://winslow.cn/2016/09/15/C语言基本数据类型/index.html">
+<meta property="og:site_name" content="我心有多路平衡查找树">
+<meta property="og:description" content="1. C语言的数据表现形式1.1. 常量和变量在C语言中，数据有两种表现形式：常量和变量 1.1.1. 常量 在程序运行过程中，其值不能改变的量称为常量  常用的常量有以下几种： （1）整型常量整型常量即整数（没有小数部分），如123，-90，87等都是整型常量 （2）实型常量实型常量即实数（可以表示带有小数的数），实型常量有两种表示形式：十进制小数形式：如123.123，0.454，-98.98">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://winslow.cn/2019/06/04/遗传算法简介及其实现/遗传算法流程图.png">
-<meta property="og:updated_time" content="2019-07-20T09:04:10.396Z">
+<meta property="og:updated_time" content="2019-07-29T03:17:06.422Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="遗传算法简介">
-<meta name="twitter:description" content="1. 遗传算法简介及其基本原理&amp;emsp;&amp;emsp;遗传算法（Genetic Algorithm，GA）是由美国密歇根大学心理学教授、电子工程学和计算机科学教授John H. Holland首先提出的一种随机自适应的全局搜索算法。遗传算法吸收了生命科学与工程学科中的重要理论成果，用于解决复杂优化问题。其中，达尔文的进化论和以孟德尔的遗传学说为基础的现代遗传学对算法的提出具有最为重要的影响。 &amp;e">
-<meta name="twitter:image" content="http://winslow.cn/2019/06/04/遗传算法简介及其实现/遗传算法流程图.png">
+<meta name="twitter:title" content="C语言基本数据类型">
+<meta name="twitter:description" content="1. C语言的数据表现形式1.1. 常量和变量在C语言中，数据有两种表现形式：常量和变量 1.1.1. 常量 在程序运行过程中，其值不能改变的量称为常量  常用的常量有以下几种： （1）整型常量整型常量即整数（没有小数部分），如123，-90，87等都是整型常量 （2）实型常量实型常量即实数（可以表示带有小数的数），实型常量有两种表示形式：十进制小数形式：如123.123，0.454，-98.98">
 
 
 
@@ -121,7 +151,7 @@
 
   
   
-  <link rel="canonical" href="http://winslow.cn/2019/06/04/遗传算法简介及其实现/">
+  <link rel="canonical" href="http://winslow.cn/2016/09/15/C语言基本数据类型/">
 
 
 
@@ -131,7 +161,7 @@
   };
 </script>
 
-  <title>遗传算法简介 | WINSLOW</title>
+  <title>C语言基本数据类型 | 我心有多路平衡查找树</title>
   
 
 
@@ -200,7 +230,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">WINSLOW</span>
+        <span class="site-title">我心有多路平衡查找树</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -281,7 +311,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">12</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">13</span></a>
 
   </li>
         
@@ -300,7 +330,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-briefcase"></i> <br>分类<span class="badge">4</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-briefcase"></i> <br>分类<span class="badge">5</span></a>
 
   </li>
         
@@ -319,7 +349,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">6</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">9</span></a>
 
   </li>
         
@@ -421,7 +451,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://winslow.cn/2019/06/04/遗传算法简介及其实现/">
+    <link itemprop="mainEntityOfPage" href="http://winslow.cn/2016/09/15/C语言基本数据类型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="范有森">
@@ -430,7 +460,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WINSLOW">
+      <meta itemprop="name" content="我心有多路平衡查找树">
     </span>
 
     
@@ -438,7 +468,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">遗传算法简介
+          <h2 class="post-title" itemprop="name headline">C语言基本数据类型
 
               
             
@@ -465,7 +495,7 @@
                 
               
 
-              <time title="创建时间：2019-06-04 12:25:28" itemprop="dateCreated datePublished" datetime="2019-06-04T12:25:28+08:00">2019-06-04</time>
+              <time title="创建时间：2016-09-15 17:07:48" itemprop="dateCreated datePublished" datetime="2016-09-15T17:07:48+08:00">2016-09-15</time>
             
 
             
@@ -485,7 +515,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算智能/" itemprop="url" rel="index"><span itemprop="name">计算智能</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/C语言/" itemprop="url" rel="index"><span itemprop="name">C语言</span></a></span>
 
                 
                 
@@ -524,7 +554,7 @@
                 
                   <span class="post-meta-item-text">字数：</span>
                 
-                <span title="字数">4.7k</span>
+                <span title="字数">2.1k</span>
               
 
               
@@ -538,7 +568,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">6 分钟</span>
+                <span title="阅读时长">3 分钟</span>
               
             </div>
           
@@ -558,112 +588,109 @@
       
 
       
-        <h1 id="1-遗传算法简介及其基本原理"><a href="#1-遗传算法简介及其基本原理" class="headerlink" title="1. 遗传算法简介及其基本原理"></a>1. 遗传算法简介及其基本原理</h1><p>&emsp;&emsp;<strong>遗传算法</strong>（Genetic Algorithm，GA）是由美国密歇根大学心理学教授、电子工程学和计算机科学教授John H. Holland首先提出的一种随机自适应的全局搜索算法。遗传算法吸收了生命科学与工程学科中的重要理论成果，用于解决复杂优化问题。其中，达尔文的进化论和以孟德尔的遗传学说为基础的现代遗传学对算法的提出具有最为重要的影响。</p>
-<p>&emsp;&emsp;生物的进化过程是一个不断往复的循环过程。在每个循环中，由于自然环境的恶劣、资源的短缺和天敌的侵害等因素，个体必须接受自然的选择。在选择过程中，一部分对自然环境具有较高适应能力的个体得以保存下来形成新的种群。而另一部分个体则由于不适应自然环境而面临被淘汰的危险。经过选择保存下来的群体构成种群，种群中的生物个体进行交配繁衍，保证了种群的发展。交配产生的子代继承了父代的部分特性，而且一般来说，子代要比父代具有更强的环境适应能力。进化过程伴随着种群的变异，种群中部分个体发生基因变异，成为新的个体。这样，经过选择、交配和变异后的种群取代了原来的种群，进入下一个循环。</p>
-<p>&emsp;&emsp;遗传算法正是通过模拟自然界中生物的遗传进化过程，对优化问题的最优解进行搜索。算法维护一个代表问题潜在解得群体，对于群体的优化，算法引入了类似自然进化中选择、交配以及变异等算子。遗传算法搜索全局最优解的过程是一个不断迭代的过程（每一次迭代相当于生物进化中的一次循环），知道满足算法的终止条件为止。</p>
-<p>&emsp;&emsp;在遗传算法中，问题的每个有效解被称为一个“<strong>染色体</strong>（chromosome）”，相对于群体中的每个生物<strong>个体</strong>（individual）。染色体的具体形式是一个使用特定编码方式生成的编码串。编码串中的每一个编码单元称为“<strong>基因</strong>（gene）”。</p>
-<p>&emsp;&emsp;遗传算法通过比较<strong>适应值</strong>（fitness value）区分染色体的优劣，适应值越大的染色体越优秀。<strong>评估函数</strong>（evaluation function）用来计算并确定染色体对应的适应值。</p>
-<p>&emsp;&emsp;<strong>选择算子</strong>（selection）按照一定的规则对群体的染色体进行选择，得到父代种群。一般地，越优秀的染色体被选中的次数越多。</p>
-<p>&emsp;&emsp;<strong>交配算子</strong>（crossover）作用于每两个成功交配的染色体，染色体交换各自的部分基因，产生两个子代染色体。子代染色体取代父代染色体进入新种群，而没有交配的染色体则直接进入新种群。</p>
-<p>&emsp;&emsp;<strong>变异算子</strong>（mutation）使新种群进行小概率的变异。染色体发生变异的基因改变数值，得到新的染色体。经过变异的新种群替代原有种群进入下一次进化。</p>
-<p>定义表</p>
+        <h1 id="1-C语言的数据表现形式"><a href="#1-C语言的数据表现形式" class="headerlink" title="1. C语言的数据表现形式"></a>1. C语言的数据表现形式</h1><h2 id="1-1-常量和变量"><a href="#1-1-常量和变量" class="headerlink" title="1.1. 常量和变量"></a>1.1. 常量和变量</h2><p>在C语言中，数据有两种表现形式：常量和变量</p>
+<h3 id="1-1-1-常量"><a href="#1-1-1-常量" class="headerlink" title="1.1.1. 常量"></a>1.1.1. 常量</h3><blockquote>
+<p>在程序运行过程中，其值不能改变的量称为常量</p>
+</blockquote>
+<p>常用的常量有以下几种：</p>
+<p>（1）整型常量<br>整型常量即整数（没有小数部分），如123，-90，87等都是整型常量</p>
+<p>（2）实型常量<br>实型常量即实数（可以表示带有小数的数），实型常量有两种表示形式：<br>十进制小数形式：如123.123，0.454，-98.98，0.0，1.0等<br>指数形式：如12.35e3（表示$12.35 \times 10^3$），-354.2e-34（表示$-354.2 \times 10^{-34}$）</p>
+<p>（3）字符常量<br>字符常量分为两种</p>
+<p>普通字符：<br>用单撇号括起来的<strong>一个</strong>字符，如: ‘a’, ‘b’, ‘c’, ‘2’ ,’?’</p>
+<blockquote>
+<p>注意：这里的单撇号’是英文符号</p>
+</blockquote>
+<p>转义字符：<br>转义字符是一种控制字符，在程序中无法用一般形式的字符来表示，只能用反斜杠\开头这样的特殊形式来表示，如下表：</p>
 <div class="table-container">
 <table>
 <thead>
 <tr>
-<th>生物遗传进化</th>
-<th>遗传算法</th>
+<th>转义字符</th>
+<th>字符值</th>
+<th>输出结果</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>群体</td>
-<td>问题搜索空间的一组有效解（表现为群体规模$N$）</td>
+<td>\’</td>
+<td>一个单撇号（’）</td>
+<td>输出一个单撇号</td>
 </tr>
 <tr>
-<td>种群</td>
-<td>经过选择产生的新群体（规模同样为$N$）</td>
+<td>\\</td>
+<td>一个反斜杠（\）</td>
+<td>输出反斜杠</td>
 </tr>
 <tr>
-<td>染色体</td>
-<td>问题有效解的编码串</td>
+<td>\n</td>
+<td>换行</td>
+<td>将当前位置移到下一行的开头</td>
 </tr>
 <tr>
-<td>基因</td>
-<td>染色体的一个编码单元</td>
-</tr>
-<tr>
-<td>适应能力</td>
-<td>染色体的适应值</td>
-</tr>
-<tr>
-<td>交配</td>
-<td>两个染色体交换部分基因得到两个新的子代染色体</td>
-</tr>
-<tr>
-<td>变异</td>
-<td>染色体某些基因的数值发生改变</td>
-</tr>
-<tr>
-<td>进化结束</td>
-<td>算法满足终止条件时结束，输出全局最优解</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
 </tr>
 </tbody>
 </table>
 </div>
-<h1 id="2-遗传算法的流程"><a href="#2-遗传算法的流程" class="headerlink" title="2. 遗传算法的流程"></a>2. 遗传算法的流程</h1><p>遗传算法的实现主要包括了一下七个重要问题</p>
-<ul>
-<li>染色体的编码</li>
-<li>群体的初始化</li>
-<li>适应值评价</li>
-<li>选择种群</li>
-<li>种群交配</li>
-<li>种群变异</li>
-<li>算法流程</li>
-</ul>
-<p>&emsp;&emsp;这个几个问题尤其是选择算子、交配算子和变异算子的具体实现与算法搜索全局最优解的能力息息相关。在处理不同优化问题时，以上几个方面可能需要根据问题的特定情况采用不同的方法实现，以提高遗传算法的性能。</p>
-<h2 id="2-1-染色体编码"><a href="#2-1-染色体编码" class="headerlink" title="2.1. 染色体编码"></a>2.1. 染色体编码</h2><p>&emsp;&emsp;应用遗传算法，需要解决问题解的表示，即染色体的编码方式。染色体编码方式确定是否得当会对接下来染色体的交配和变异操作构成影响。在使用遗传算法解决具体问题时，采用何种编码方案不是一概而论的，应尽量分析问题的特点，制定可行的编码方案。</p>
-<p>&emsp;&emsp;目前用于染色体编码的方法有格雷码编码、字母编码、多参数交叉编码等。下面仅介绍<strong>二进制编码方法</strong>（Binary Representation）和<strong>浮点数编码方法</strong>（Float Point Representation）</p>
-<h3 id="2-1-1-二进制编码方式"><a href="#2-1-1-二进制编码方式" class="headerlink" title="2.1.1. 二进制编码方式"></a>2.1.1. 二进制编码方式</h3><p>&emsp;&emsp;二进制编码方法产生的染色体是一个二进制符号序列，染色体的每一个基因只能取值$0$或$1$。假定问题定义的有效解空间为$[U_{min},U_{max}]^D$,其中$D$为有效解得变量维数，使用$L$位二进制符号串表示解的一维变量，则得到如下表所示的编码方式：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>二进制符号串</th>
-<th>对应的实际取值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>$0000···0000$</td>
-<td>$U_{min}$</td>
-</tr>
-<tr>
-<td>$1111···1111$</td>
-<td>$U_{max}$</td>
-</tr>
-<tr>
-<td>$X_LX_{L-1}···X_2X_1$</td>
-<td>$U_{min}+\frac{(U_{max}-U_{min}) \sum_{j=1}^{L} {X_j  2^{j-1}}}{2^L-1}$</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>&emsp;&emsp;例如，假设$[U_{min},U_{max}]为[1,64]$，采用$6$为二进制符号串进行编码，则某个二进制符号串$010101$代表了数值$22$</p>
-<p>&emsp;&emsp;因此采用$L$位进行编码时的精度为$\frac{U_{max}-U_{min}}{2^L-1}$，可见该种方法在编码的精度方面是较差的。当要求采用较高的精度或表示较大范围的数时，必须通过增加$L$来达到要求。可是当$L$变得很大时，将增加算法操作复杂度和运算量。所以二进制编码在解决某些精度要求较高或解含有多个变量的优化问题时，表现得不尽人意。</p>
-<h3 id="2-1-2-浮点数编码方式"><a href="#2-1-2-浮点数编码方式" class="headerlink" title="2.1.2. 浮点数编码方式"></a>2.1.2. 浮点数编码方式</h3><p>&emsp;&emsp;浮点数编码方法中，染色体的长度等于问题定义的解的变量个数，染色体的每一个基因等于解的每一维变量。例如待求解问题的一个有效解为$X_i=(x_{i}^{1},x_{i}^{2},···,x_{i}^{D-1},x_{i}^{D})$，其中D为解的变量维数。则该解对应的染色体编码为$(x_{i}^{1},x_{i}^{2},···,x_{i}^{D-1},x_{i}^{D})$。</p>
-<p>&emsp;&emsp;浮点数编码方式适合于表示取值范围较大的数值，对降低采用遗传算法对染色体进行处理的复杂性起到了很好的作用。</p>
-<h2 id="2-2-群体的初始化"><a href="#2-2-群体的初始化" class="headerlink" title="2.2. 群体的初始化"></a>2.2. 群体的初始化</h2><p>&emsp;&emsp;遗传算法在一个给定的初始化进化种群中进行迭代搜索。一般情况下，在群体初始化阶段采用的是随机数初始方法。采用生成随机数的方式，对染色体的每一维变量进行初始化赋值。如果在初始化时保证初始群体已经是一定程度上的优良群体的话，将能够有效提高算法找到全局最优解的能力。</p>
-<h2 id="2-3-适应值评价"><a href="#2-3-适应值评价" class="headerlink" title="2.3. 适应值评价"></a>2.3. 适应值评价</h2><p>&emsp;&emsp;评价函数用于评估各个染色体的适应值，进而区分优劣。评价函数常常根据问题的优化目标来确定，如在求解函数优化问题时，问题定义的目标函数可以作为评价函数的原型。对于求解最大值的问题，可以按照遗传算法的规定认为适应值越大染色体越优。对于其他优化问题，问题定义的目标函数必须经过一定的变换。例如，应用求解某个函数的最小值，可对问题定义的目标函数$f(X)$进行以下变换，得到算法的评价函数$Eval(C)$</p>
-<script type="math/tex; mode=display">Eval(C) = - f(X)</script><p>其中$X$表示一个有效解，$C$表示$X$对应的染色体。</p>
-<h2 id="2-4-选择算子"><a href="#2-4-选择算子" class="headerlink" title="2.4. 选择算子"></a>2.4. 选择算子</h2><p>&emsp;&emsp;种群的选择操作使用<strong>轮盘赌选择算法</strong>（roulette wheel selection）。轮盘赌选择算法是遗传算法中最经常使用的选择算法，其基本思想是基于概率的随机选择。<br>&emsp;&emsp;轮盘赌选择算法首先根据群体中每个染色体的适应值得到群体所有染色体的适应值总和，并分别计算每个染色体适应值与群体适应值总和的比$P_i$；其次假设一个具有$N$个扇区的轮盘，每个扇区对应群体中的一个染色体，扇区的大小与对应染色体的$P_i$成正比关系。<br>&emsp;&emsp;每次选择就转动一次轮盘，轮盘转动停止时指针停留的扇区对应的染色体即被选中进入种群。一次进行$N$次选择即可得到规模同样为$N$的种群。较优染色体的$P$值较大，被选择的概率也就相对较大。但由于选择过程具有随机性，并不能保证每次选择均选中这些较优的染色体，因此较差染色体也有一定的生存空间。</p>
-<h2 id="2-5-交配算子"><a href="#2-5-交配算子" class="headerlink" title="2.5. 交配算子"></a>2.5. 交配算子</h2><p>&emsp;&emsp;在染色体交配阶段,每个染色体能否进行交配由交配概率$P_c$(一般取值为$0.4~0.99$之间)决定，其具体过程为：对于每个染色体，如果$Random(0,1)$小于$P_c$则表示该染色体可进行交配操作，其中$Random(0,1)$为$[0,1]$间均匀分布的随机数产生器，否则染色体不参与交配直接复制到新种群中。<br>&emsp;&emsp;每两个按照$P_c$交配概率选择出来的染色体进行交配，经过交换各自的部分基因，产生两个新的子代染色体。其具体操作是随机产生一个有效的交配位置，染色体交换位于该交配位置后的所有基因。参与交配的父代染色体个数与产生的子代染色体个数一样，因此新种群的规模依然为$N$。</p>
-<h2 id="2-6-变异算子"><a href="#2-6-变异算子" class="headerlink" title="2.6. 变异算子"></a>2.6. 变异算子</h2><p>&emsp;&emsp;染色体的编译作用于基因之上，对于交配后新种群中染色体的每一位基因，根据变异概率$P_m$判断该基因是否变异。如果$Random(0,1)$小于$P_m$，则改变该基因的取值；否则该基因不发生变异，保持不变。</p>
-<p>&emsp;&emsp;为了保持遗传算法较好的运行性能，变异概率$P_m$应该设置在一个合适的范围内。变异操作通过改变原有染色体的基因，在提高群体多样性方面具有明显的促进作用。如果$P_m$过小，算法容易早熟，在算法运行过程中，已找到的较优解可能在变异过程中遭到破坏；如果$P_m$过大，可能会导致算法目前所处的较好的搜索状态倒退回到原来较差的情况。因此，应该讲种群的变异限制在一定范围内。一般地，$P_m$可设定在$0.001~0.1之间$</p>
-<h2 id="2-7-算法流程"><a href="#2-7-算法流程" class="headerlink" title="2.7. 算法流程"></a>2.7. 算法流程</h2><p>遗传算法的基本步骤：</p>
-<p>$1.$ 初始化规模为$N$的群体，其中染色体每个基因的值采用随机数产生器生成。当前进化代数$Generation=0$<br>$2.$ 采用评价函数对群体中所有染色体进行评价，分别计算每个染色体的适应值，保存适应值最大的染色体$Best$<br>$3.$ 采用轮盘赌选择算法对群体中的染色体进行选择操作，产生规模同为$N$的种群。<br>$4.$ 按照概率$P_c$从种群中选择染色体进行交配。每两个进行交配的父代染色体，交换部分基因，产生两个新的子代染色体，子代染色体取代父代染色体进入新种群。没有进行交配的染色体则直接复制进入新种群。<br>$5.$ 按照概率$P_m$对新种群中染色体的基因进行变异操作。发生变异的基因数值发生改变。变异后的染色体取代原有染色体进入新群体，未发生变异的染色体直接进入新群体。<br>$6.$ 变异后的新群体取代原有群体，重新计算群体中各个染色体的适应值。倘若群体的最大适应值大于$Best$，则以该最大适应值对应的染色体替代$Best$<br>$7.$ 当前进化代数$Generation$加$1$。如果$Generation$超过规定的最大进化代数或$Best$达到规定的误差要求，算法结束；否则回到步骤$3$</p>
-<p>注：染色体的交配和变异操作均是在选择后进行的。</p>
-<p><img src="遗传算法流程图.png" alt="遗传算法流程图"></p>
+<p>上表列出的字符称为转义字符，意思就是将 \ 后面的字符转换成另外的意思，如’\n’不代表字符n而代表换行</p>
+<p>值得注意的是，字符常量在计算机存储单元中存储时，并不是存储字符本身，而是将字符对应的代码（一般采用<sup><a href="#fn_ASCII" id="reffn_ASCII">ASCII</a></sup>码）存储在内存单元中，如字符’a’的ASCII码时97，在存储字符’a’时就是将97的二进制形式存放在内存单元中。</p>
+<p>（4）字符串常量<br>如”boy”, “232”等，用双撇号将若干个字符括起来，字符串常量是双撇号中的全部字符（不包括双撇号）。单撇号内只能包括一个字符，而双撇号内可以包含多个字符。</p>
+<p>（5）符号常量<br>用#define指令，指定用一个符号名称代表一个常量。如：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta"># <span class="meta-keyword">define</span> PI 3.14</span></span><br><span class="line"><span class="comment">// 经过以上指令的指定后，本文件中此行开始的所有的PI都代表3.14</span></span><br><span class="line"><span class="comment">// 在对程序编译前，预处理器先对PI进行处理，把所有PI全部置换为3.14.这种用一个符号代表一个常量的，称为符号常量</span></span><br><span class="line"><span class="comment">// 在预编译后符号常量已全部变成字面常量（3.14），使用符号常量有以下好处：</span></span><br><span class="line"><span class="comment">// （1）含义清楚，看程序时从PI就可大致清楚它代表圆周率。</span></span><br><span class="line"><span class="comment">// （2）在需要改变程序中多出用到的同一个常量时，能做到一改全改。</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>要注意区分符号常量和变量，符号常量不是变量。符号常量不占内存，只是一个临时符号，在预编译后这个符号就不存在了，故不能对符号常量赋新值。为与变量有所区别，习惯上符号常量常用大写表示。如PI，PRICE等。</p>
+</blockquote>
+<h3 id="1-1-2-变量"><a href="#1-1-2-变量" class="headerlink" title="1.1.2. 变量"></a>1.1.2. 变量</h3><p>变量代表一个有名字的、具有特定属性的一个存储单元，用来存放数据，也就是存放变量的值。在程序运行期间变量的值时可以改变的。变量必须先定义后使用。在定义变量时指定该变量的名称和类型。<br>如：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">4</span>;</span><br><span class="line"><span class="comment">// a 是变量名，4是变量的值也就是存放在变量a的内存单元中的数据，int是变量的类型</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>变量名实际上是以一个名字代表的存储地址，在对程序编译连接时由编译系统给每一个变量名分配对应的内存地址。从变量中取值，实际上是通过变量名找到相应的内存地址，从该存储单元中读取数据。</p>
+</blockquote>
+<h3 id="1-1-3-常变量"><a href="#1-1-3-常变量" class="headerlink" title="1.1.3. 常变量"></a>1.1.3. 常变量</h3><p>在C99中允许使用常变量，如：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> a = <span class="number">3</span>;</span><br><span class="line"><span class="comment">// 表示a被定义为一个整型变量，指定其值为3，而且在变量存在期间其值不能改变。</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>常变量与常量的异同是：常变量具有变量的基本属性，有类型，占存储单元，只是不允许改变其值。可以说，常变量是具有名字的不变量，而常量是没有名字的不变量。由名子就便于在程序中被引用。</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 定义符号常量</span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">define</span> PI 3.14</span></span><br><span class="line"><span class="comment">// 定义常变量</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">float</span> pi = <span class="number">3.14</span>;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>符号常量与常变量异同：符号常量不占用内存单元，在预编译后，符号常量就不存在了（全部置换为3.14）。而常变量要占用存储单元，由变量值，只是该值不能再改变而已。从使用的角度看，常变量具有符号常量的优点，而且使用更方便，因此有了常变量后可以不必多使用符号常量。</p>
+</blockquote>
+<h3 id="1-1-4-C语言的表示符规范"><a href="#1-1-4-C语言的表示符规范" class="headerlink" title="1.1.4. C语言的表示符规范"></a>1.1.4. C语言的表示符规范</h3><p>在计算机高级语言中，用来对变量、符号常量名、函数、数组、类型等命名的有效字符序列统称为标识符。<br>如<code>int a =3; \\a 就是一个表示符，也即变量</code>。</p>
+<p>C语言规定标识符只能由字母、数字和下划线3中字符组成，且第一个字符必须为字母或下划线。另外要注意C语言是大小写敏感的如<code>sum 和 SUM</code>是两个不同的变量名。</p>
+<h1 id="2-数据类型"><a href="#2-数据类型" class="headerlink" title="2. 数据类型"></a>2. 数据类型</h1><p>所谓类型，就是对数据分配存储单元的安排，包括存储单元的长度（占多少字节）以及数据的存储形式。不同的类型分配不同的长度和存储形式。<br>C语言常用数据类型(有* 的是C99所增加的)：</p>
+<script type="math/tex; mode=display">
+数据类型\begin{cases}
+    基本类型\begin{cases}
+        整型类型\begin{cases}
+            基本整型 int\\
+            短整型 short\ int\\
+            长整型 long\ int\\
+            * 双长整型 long\ long\ int\\
+            字符型 char\\
+            * 布尔型 bool
+        \end{cases}\\
+        浮点类型\begin{cases}
+            单精度浮点型 float\\
+            双精度浮点型 double\\
+            复数浮点型 float\_complex,double\_comple,long\ long\_comple
+        \end{cases}
+    \end{cases}\\
+    枚举类型 enum\\
+    空类型 void\\
+    派生类型\begin{cases}
+        指针类型 *\\
+        数组类型 []\\
+        结构题类型 struct\\
+        共用体类型 union\\
+        函数类型
+    \end{cases}
+\end{cases}</script><h1 id="3-参考文献"><a href="#3-参考文献" class="headerlink" title="3. 参考文献"></a>3. 参考文献</h1><blockquote>
+<p>《C程序设计》谭浩强</p>
+</blockquote>
+<blockquote id="fn_ASCII">
+<sup>ASCII</sup>. (American Standard Code for Information Interchange): 美国信息交换标准代码，是基于拉丁字母的一套电脑编码系统，主要用于显示现代英语和其他西欧语言。它是最通用的信息交换标准，并等同于国际标准ISO/IEC 646。ASCII第一次以规范标准的类型发表是在1967年，最后一次更新则是在1986年，到目前为止共定义了128个字符。<a href="https://baike.baidu.com/item/ASCII/309296" target="_blank" rel="noopener">ASCII百度百科介绍</a><a href="#reffn_ASCII" title="Jump back to footnote [ASCII] in the text."> &#8617;</a>
+</blockquote>
 
       
     </div>
@@ -698,10 +725,10 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="http://winslow.cn/2019/06/04/遗传算法简介及其实现/" title="遗传算法简介">http://winslow.cn/2019/06/04/遗传算法简介及其实现/</a>
+    <a href="http://winslow.cn/2016/09/15/C语言基本数据类型/" title="C语言基本数据类型">http://winslow.cn/2016/09/15/C语言基本数据类型/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
 </ul>
 
       </div>
@@ -714,9 +741,7 @@
         
         <div class="post-tags">
           
-            <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
-          
-            <a href="/tags/计算智能/" rel="tag"><i class="fa fa-tag"></i> 计算智能</a>
+            <a href="/tags/C语言/" rel="tag"><i class="fa fa-tag"></i> C语言</a>
           
         </div>
       
@@ -750,18 +775,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/04/最优化问题/" rel="next" title="计算智能——最优化问题">
-                <i class="fa fa-chevron-left"></i> 计算智能——最优化问题
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/17/数学之美中的一段话/" rel="prev" title="吴军《数学之美》中的一段话，看了很有感触">
-                吴军《数学之美》中的一段话，看了很有感触 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/09/20/C语言指向数组的指针/" rel="prev" title="C语言指向数组的指针">
+                C语言指向数组的指针 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -833,7 +854,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -858,7 +879,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -899,7 +922,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">12</span>
+                      
+                    
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -963,7 +988,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-遗传算法简介及其基本原理"><span class="nav-text">1. 遗传算法简介及其基本原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-遗传算法的流程"><span class="nav-text">2. 遗传算法的流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-染色体编码"><span class="nav-text">2.1. 染色体编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-1-二进制编码方式"><span class="nav-text">2.1.1. 二进制编码方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-2-浮点数编码方式"><span class="nav-text">2.1.2. 浮点数编码方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-群体的初始化"><span class="nav-text">2.2. 群体的初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-适应值评价"><span class="nav-text">2.3. 适应值评价</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-选择算子"><span class="nav-text">2.4. 选择算子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-交配算子"><span class="nav-text">2.5. 交配算子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-变异算子"><span class="nav-text">2.6. 变异算子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-算法流程"><span class="nav-text">2.7. 算法流程</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-C语言的数据表现形式"><span class="nav-text">1. C语言的数据表现形式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-常量和变量"><span class="nav-text">1.1. 常量和变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1-常量"><span class="nav-text">1.1.1. 常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-2-变量"><span class="nav-text">1.1.2. 变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-3-常变量"><span class="nav-text">1.1.3. 常变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-4-C语言的表示符规范"><span class="nav-text">1.1.4. C语言的表示符规范</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-数据类型"><span class="nav-text">2. 数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-参考文献"><span class="nav-text">3. 参考文献</span></a></li></ol></div>
             
 
           </div>
@@ -991,7 +1016,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">  <a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">粤ICP备18042042号 </a>&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">  <a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">粤ICP备18042042号 </a>&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -1005,7 +1030,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">18k</span>
+    <span title="站点总字数">19k</span>
   
 
   
@@ -1016,12 +1041,10 @@
     
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
     
-    <span title="阅读时长">21 分钟</span>
+    <span title="阅读时长">23 分钟</span>
   
 </div>
 
-
-  <div class="powered-by">Powered By <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> </div>
 
 
 
@@ -1606,6 +1629,15 @@ if ($('body').find('pre.mermaid').length) {
   
 
   
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script>
+  
+    bookmark.scrollToMark('auto', "#更多");
+  
+  </script>
+
 
   
 <script>
